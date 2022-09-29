@@ -168,11 +168,6 @@ body {
   font-weight: 600;
 }
 
-.precio {
-  font-weight: 600;
-  color: #004638;
-}
-
 .suma {
   display: flex;
   align-items: center;
@@ -225,7 +220,8 @@ body {
 }
 
 .goleador {
-  font-weight: 600;
+  font-weight: bold;
+  margin-right: 0.4rem;
 }
 
 
@@ -251,6 +247,30 @@ body {
 .resultadocampeon span {
   padding: 1rem;
 }
+
+.precio {
+  font-weight: 600;
+  color: #004638;
+}
+
+.equipo {
+  font-weight: normal;
+  margin-right: 0.4rem;
+}
+
+.selectedgoleador {
+  background: #009578;
+  color: #ffffff;
+}
+
+.sumagoleador {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
+
 
 
 

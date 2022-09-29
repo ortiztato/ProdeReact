@@ -2,6 +2,7 @@
 import './App.css';
 import Desilusion from './components/Desilusion/Desilusion';
 import Ganador from './components/Ganador/ganador';
+import Goleadores from './components/Goleadores/Goleadores';
 import Lamentable from './components/Lamentable/Lamentable';
 import Revelacion from './components/Revelacion/Revelacion';
 import Semis from './components/Semis/Semis';
@@ -18,6 +19,8 @@ function App() {
       <Revelacion />
       <Lamentable />
       <Semis />
+      <Goleadores />
+
 
     </div>
 

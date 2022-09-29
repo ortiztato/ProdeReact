@@ -41,7 +41,7 @@ const Desilusion = () => {
         {
             id: 'e9',
             name: 'Portugal'
-        },
+        }
 
     ]
 

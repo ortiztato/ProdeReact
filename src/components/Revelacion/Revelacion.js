@@ -6,21 +6,76 @@ import React, { useState } from 'react';
 const Revelacion = () => {
 
     const equiposrevelacion = [
+
         {
-            id: 'e1',
+            id: 'e10',
+            name: 'Dinamarca'
+        }, {
+            id: 'e11',
+            name: 'Senegal'
+        }, {
+            id: 'e12',
+            name: 'Croacia'
+        }, {
+            id: 'e13',
+            name: 'Uruguay'
+        }, {
+            id: 'e14',
+            name: 'Suiza'
+        }, {
+            id: 'e15',
+            name: 'USA'
+        }, {
+            id: 'e16',
+            name: 'Serbia'
+        }, {
+            id: 'e17',
+            name: 'Mexico'
+        }, {
+            id: 'e18',
+            name: 'Polonia'
+        }, {
+            id: 'e19',
+            name: 'Qatar'
+        }, {
+            id: 'e20',
+            name: 'Gales'
+        }, {
+            id: 'e21',
+            name: 'Ghana'
+        }, {
+            id: 'e22',
+            name: 'Camerun'
+        }, {
+            id: 'e23',
+            name: 'Ecuador'
+        }, {
+            id: 'e24',
+            name: 'Canada'
+        }, {
+            id: 'e25',
             name: 'Japon'
-        },
-        {
-            id: 'e2',
-            name: 'Brasil'
-        },
-        {
-            id: 'e3',
-            name: 'Francia'
-        },
-        {
-            id: 'e4',
-            name: 'Inglaterra'
+        }, {
+            id: 'e26',
+            name: 'Corea'
+        }, {
+            id: 'e27',
+            name: 'Australia'
+        }, {
+            id: 'e28',
+            name: 'Iran'
+        }, {
+            id: 'e29',
+            name: 'Marruecos'
+        }, {
+            id: 'e30',
+            name: 'Arabia'
+        }, {
+            id: 'e31',
+            name: 'Tunez'
+        }, {
+            id: 'e32',
+            name: 'Costa Rica'
         },
 
     ]
