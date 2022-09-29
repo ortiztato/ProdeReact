@@ -1,38 +1,260 @@
+:root {
+  --theme-color: rgb(11, 1, 1);
+  --primary-color: #08fdd8;
+  --secundary-color: #08fdd8;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  max-width: 1100px;
+  display: grid;
+  margin: auto;
+}
+
+
 .App {
+  padding: 10px 10px 0px 10px;
+}
+
+.sectionequipos {
+  padding: 10px 10px 0px 10px;
+}
+
+
+.tituloequipos {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.subtituloequipos {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+
+/* br {
+  display: block;
+  content: "";
+  margin: 10px 0;
+} */
+
+.reglas {
+  margin-bottom: 10px;
+  transition: 1s;
+
+}
+
+.editar {
+  font-size: 13px;
+  color: #858888;
+  cursor: pointer;
+  margin-left: 1rem;
+
+}
+
+.hide {
+  animation: hide 1s linear;
+  animation-fill-mode: forwards;
+
+}
+
+
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+
+
+  100% {
+    height: 0px;
+    opacity: 0;
+    pointer-events: none;
+    margin: 0px;
+    padding: 0px;
+    line-height: 0px;
+  }
+}
+
+.puntos {
   text-align: center;
+  margin-bottom: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 40%);
+  width: 100%;
+  gap: 1px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  transition: 1s;
+  margin-bottom: 70px;
+  padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.item {
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3px;
+  background: #eeeeee;
+  display: flex;
+  justify-content: center;
+  /* transition: background 0.1s; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+
+.itemdesilu {
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3px;
+  background: #eeeeee;
+  display: flex;
+  justify-content: center;
+  /* transition: background 0.1s; */
+}
+
+.itemreve {
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3px;
+  background: #eeeeee;
+  display: flex;
+  justify-content: center;
+  /* transition: background 0.1s; */
+}
+
+.itemlamen {
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3px;
+  background: #eeeeee;
+  display: flex;
+  justify-content: center;
+  /* transition: background 0.1s; */
+}
+
+.itemsemis {
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3px;
+  background: #eeeeee;
+  display: flex;
+  justify-content: center;
+  /* transition: background 0.1s; */
+}
+
+.selected {
+  background: #009578;
+  color: #ffffff;
+}
+
+.selectedsemis {
+  background: #009578;
+  color: #ffffff;
+}
+
+.equipo {
+  font-weight: 600;
+}
+
+.precio {
+  font-weight: 600;
+  color: #004638;
+}
+
+.suma {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#resultado {
+  margin-left: 3px;
+  font-weight: 600;
+  color: #009578;
+}
+
+.sectiongoleadores {
+  padding: 10px 10px 0px 10px;
+}
+
+.titulogoleadores {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.gridgoleadores {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  width: 100%;
+  gap: 1px;
+  justify-content: center;
+}
+
+.itemgoleador {
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3px;
+  background: #eeeeee;
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  /* transition: background 0.1s; */
+}
+
+
+
+
+.selectedgoleador {
+  background: #009578;
+  color: #ffffff;
+}
+
+.goleador {
+  font-weight: 600;
+}
+
+
+.sumagoleador {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#resultadogoleador {
+  margin-left: 3px;
+  font-weight: 600;
+  color: #009578;
+}
+
+.resultadocampeon {
+  margin-left: 3px;
+  font-weight: 600;
+  color: #009578;
+}
+
+
+
+@media (min-width: 950px) {
+  .gridgoleadores {
+    display: grid;
+    grid-template-columns: repeat(2, 40%);
+    width: 100%;
+    gap: 1px;
+    justify-content: center;
   }
 }
