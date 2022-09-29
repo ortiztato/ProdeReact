@@ -48,7 +48,7 @@ const Semis = () => {
     const [equiposSemis, setEquiposSemis] = useState([]);
     const [edit, setedit] = useState(false);
 
-    /* useEffect(()=>{},[]) */
+
 
     const equipoSelectHandler = (equipoSelected) => {
         console.log(equipoSelected);
