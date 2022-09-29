@@ -20,8 +20,6 @@ function App() {
       <Semis />
 
     </div>
-    <guardar en git></guardar>
-
 
   );
 }

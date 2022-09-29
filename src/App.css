@@ -245,6 +245,11 @@ body {
   margin-left: 3px;
   font-weight: 600;
   color: #009578;
+
+}
+
+.resultadocampeon span {
+  padding: 1rem;
 }
 
 

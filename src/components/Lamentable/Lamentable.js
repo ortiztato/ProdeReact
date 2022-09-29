@@ -70,7 +70,7 @@ const Lamentable = () => {
                     <div id="reglascampeon" className="reglas">
                         elegí el equipo lamentable del mundial (si le va bien, perdés) <br /> según su resultado <strong>RESTA</strong> los
                         siguientes
-                        puntos: <div class="puntos">
+                        puntos: <div className="puntos">
                             <br /> 1ro: 25 <br /> 2do: 20 <br /> 3ro: 16 <br /> 4to: 13 <br /> 5tos:10 <br /> 9nos:
                             7 <br />17mos: 3 <br /> 25tos: 1
                         </div>
