@@ -1,0 +1,19 @@
+.grupo {
+    margin-top: 2rem;
+}
+
+.titulogrupo {
+    margin-bottom: 0.6rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.divpartido {
+    display: flex;
+    justify-content: center;
+}
+
+.nombreequipo {
+    width: 6rem;
+    text-align: center;
+}

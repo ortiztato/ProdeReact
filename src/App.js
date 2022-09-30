@@ -22,9 +22,19 @@ function App() {
       <Semis />
       <Goleadores />
       <Partidos />
+      <div className='divsubmit'>
+        <label for="fname">Nombre:</label><br />
+        <input
+          name="usuario"
+          type="text"
+        /* onChange={this.handleInputChange} */ />
+
+        <button className='bidsubmitbutton'> ENVIAR </button>
+      </div>
 
 
-    </div>
+
+    </div >
 
   );
 }
