@@ -4,17 +4,26 @@ import React, { useEffect, useState } from 'react';
 const ItemGoleadores = (props) => {
 
     const [itemClass, setitemClass] = useState('itemgoleador');
-    const [selected, setSelected] = useState(false);
+    const [add, setAdd] = useState(true);
 
-    useEffect(() => { setitemClass('itemgoleador'); setSelected(false) }, [props.edit])
-
+    useEffect(() => { setitemClass('itemgoleador'); setAdd(true) }, [props.edit])
 
 
     const equipoClickHandler = () => {
-        setitemClass('itemgoleador selectedgoleador')
-        let precioequipo = +props.precio
-        if (!selected) { props.onEquipoClick(props.name, precioequipo); }
-        setSelected(true)
+
+        let precioequipo = +props.precio;
+        if (!props.full) {
+            props.onEquipoClick(props.name, precioequipo, add);
+            setAdd(!add);
+            if (add) { setitemClass('itemgoleador selectedgoleador') } else { setitemClass('itemgoleador') }
+        }
+        if (props.full && !add) {
+            props.onEquipoClick(props.name, precioequipo, add);
+            setAdd(!add);
+            if (add) { setitemClass('itemgoleador selectedgoleador') } else { setitemClass('itemgoleador') }
+        }
+
+
     };
 
     return (

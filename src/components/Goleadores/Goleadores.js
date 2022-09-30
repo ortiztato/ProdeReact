@@ -1,6 +1,6 @@
 import ItemGoleadores from "./ItemGoleadores";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 const Goleadores = () => {
@@ -194,39 +194,78 @@ const Goleadores = () => {
     const [Goleadores, setGoleadores] = useState([]);
     const [edit, setedit] = useState(false);
     const [PrecioTotal, setPrecioTotal] = useState(0);
+    const [full, setFull] = useState(false);
 
-
-
-    const equipoSelectHandler = (equipoSelected, precioEquipo) => {
+    /* const equipoSelectHandler = (equipoSelected, precioEquipo,) => {
         setGoleadores(prevArray => [...prevArray, equipoSelected]);
         setPrecioTotal(PrecioTotal + Number(precioEquipo));
 
-    };
+    }; */
+
+
+
+    const equipoSelectHandler = (equipoSelected, precioEquipo, add) => {
+        if (add && Goleadores.length < 5) {
+            setGoleadores(prevArray => [...prevArray, equipoSelected]);
+            setPrecioTotal(PrecioTotal + Number(precioEquipo));
+        }
+        else if (!add) {
+            function arrayRemove(arr, value) {
+
+                return arr.filter(function (ele) {
+                    return ele !== value;
+                });
+            }
+            let remArray = arrayRemove(Goleadores, equipoSelected)
+            setGoleadores(remArray);
+            setPrecioTotal(PrecioTotal - Number(precioEquipo));
+
+        }
+    }
+
+    useEffect(() => {
+        if (Goleadores.length === 5) {
+            setFull(true)
+        }
+        else { setFull(false) };
+        console.log(Goleadores.length)
+        console.log(full)
+    }, [Goleadores])
+
 
 
     const editarSemis = () => {
         setGoleadores([]);
         setPrecioTotal(0)
         setedit(!edit)
-
-
     }
 
     const GoleadoresDisplay = Goleadores.map((equipo) => <span>{equipo}</span>);
+
+    let titulogoleadores
+    if (Goleadores.length < 5) {
+        titulogoleadores = 'resultadoincompleto'
+    } else if (PrecioTotal < 100) { titulogoleadores = 'resultadocampeon' } else { titulogoleadores = 'resultadoerror' }
+
+
+    let presupuesto
+    if (PrecioTotal > 100) {
+        presupuesto = 'presupuestoerror'
+    } else { presupuesto = 'presupuestook' }
 
 
 
     return (
         <section className="sectionequipos">
             <div className="subtituloequipos">Goleadores
-                <span className="resultadocampeon">
+                <span className={titulogoleadores}>
                     {GoleadoresDisplay}
                 </span>
-                {Goleadores.length > 0 && <span className="editar" onClick={editarSemis}>editar</span>}
+                {Goleadores.length > 0 && <span className="editar" onClick={editarSemis}>limpiar</span>}
 
             </div>
 
-            {Goleadores.length < 5 && <div>
+            <div>
                 <div id="reglascampeon" className="reglas">
                     tenes <strong>$ 100 </strong> para elegir <strong>5 goleadores</strong> <br />
                     los goleadores entregan <strong>2 puntos</strong> por cada gol que meten
@@ -243,13 +282,14 @@ const Goleadores = () => {
                             precio={key.precio}
                             onEquipoClick={equipoSelectHandler}
                             edit={edit}
+                            full={full}
                         />
                     ))}
                 </div>
-            </div>}
+            </div>
             <div >
-                <div>Presupuesto Utilizado: {PrecioTotal}</div>
-                <div>Presupuesto Restante: {100 - PrecioTotal}</div>
+                <div>Presupuesto Utilizado: ${PrecioTotal}</div>
+                <div className={presupuesto}>Presupuesto Restante: ${100 - PrecioTotal}</div>
             </div>
 
 

@@ -248,6 +248,20 @@ body {
   padding: 1rem;
 }
 
+.resultadoincompleto span {
+  font-weight: 600;
+  color: #ded700;
+  padding: 1rem;
+
+}
+
+.resultadoerror span {
+  font-weight: 600;
+  color: #de0000;
+  padding: 1rem;
+}
+
+
 .precio {
   font-weight: 600;
   color: #004638;
@@ -267,6 +281,15 @@ body {
   display: flex;
   align-items: center;
   margin-top: 10px;
+}
+
+.presupuestoerror {
+  color: #de0000;
+
+}
+
+.presupuestook {
+  color: #009578;
 }
 
 

@@ -137,12 +137,17 @@ const Semis = () => {
 
     const equiposSemisDisplay = equiposSemis.map((equipo) => <span>{equipo}</span>);
 
+    let resultado
+    if (equiposSemis.length < 4) {
+        resultado = 'resultadoincompleto'
+    } else { resultado = 'resultadocampeon' }
+
 
 
     return (
         <section className="sectionequipos">
             <div className="subtituloequipos">Equipos en Semis
-                <span className="resultadocampeon">
+                <span className={resultado}>
                     {equiposSemisDisplay}
                 </span>
                 {equiposSemis.length > 0 && <span className="editar" onClick={editarSemis}>editar</span>}
