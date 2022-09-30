@@ -120,11 +120,20 @@ const Semis = () => {
 
 
 
-    const equipoSelectHandler = (equipoSelected) => {
-        console.log(equipoSelected);
-        setEquiposSemis(prevArray => [...prevArray, equipoSelected])
-        console.log(equiposSemis);
+    const equipoSelectHandler = (equipoSelected, add) => {
+        if (add) {
+            setEquiposSemis(prevArray => [...prevArray, equipoSelected]);
+        }
+        else {
+            function arrayRemove(arr, value) {
 
+                return arr.filter(function (ele) {
+                    return ele !== value;
+                });
+            }
+            let remArray = arrayRemove(equiposSemis, equipoSelected)
+            setEquiposSemis(remArray);
+        }
     };
 
 

@@ -228,9 +228,15 @@ const Goleadores = () => {
             setFull(true)
         }
         else { setFull(false) };
-        console.log(Goleadores.length)
-        console.log(full)
-    }, [Goleadores])
+    }, [Goleadores, full])
+
+
+    /* if (Goleadores.length === 5) {
+        setFull(true)
+    }
+    else { setFull(false) }; */
+
+
 
 
 
@@ -245,7 +251,7 @@ const Goleadores = () => {
     let titulogoleadores
     if (Goleadores.length < 5) {
         titulogoleadores = 'resultadoincompleto'
-    } else if (PrecioTotal < 100) { titulogoleadores = 'resultadocampeon' } else { titulogoleadores = 'resultadoerror' }
+    } else if (PrecioTotal <= 100) { titulogoleadores = 'resultadocampeon' } else { titulogoleadores = 'resultadoerror' }
 
 
     let presupuesto
