@@ -155,6 +155,14 @@ body {
 }
 
 .selected {
+
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  /* transition: background 0.1s; */
   background: #009578;
   color: #ffffff;
 }
@@ -208,6 +216,7 @@ body {
   display: flex;
   justify-content: center;
   font-size: 15px;
+  /* display: none; */
   /* transition: background 0.1s; */
 }
 
@@ -215,6 +224,15 @@ body {
 
 
 .selectedgoleador {
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3px;
+  background: #eeeeee;
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  /* transition: background 0.1s; */
   background: #009578;
   color: #ffffff;
 }

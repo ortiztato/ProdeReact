@@ -1,6 +1,6 @@
 import ItemSemis from "./ItemSemis";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 const Semis = () => {
@@ -117,6 +117,7 @@ const Semis = () => {
 
     const [equiposSemis, setEquiposSemis] = useState([]);
     const [edit, setedit] = useState(false);
+    const [full, setFull] = useState(false);
 
 
 
@@ -140,9 +141,17 @@ const Semis = () => {
     const editarSemis = () => {
         setEquiposSemis([]);
         setedit(!edit)
-
-
     }
+
+    useEffect(() => {
+        if (equiposSemis.length === 4) {
+            setFull(true)
+        }
+        else {
+            setFull(false)
+        };
+    }, [equiposSemis, full])
+
 
     const equiposSemisDisplay = equiposSemis.map((equipo) => <span>{equipo}</span>);
 
@@ -156,7 +165,7 @@ const Semis = () => {
     return (
         <section className="sectionequipos">
             <div className="subtituloequipos">Equipos en Semis
-                <span className={resultado}>
+                <span className={resultado} style={{ display: full ? 'none' : '' }}>
                     {equiposSemisDisplay}
                 </span>
                 {equiposSemis.length > 0 && <span className="editar" onClick={editarSemis}>editar</span>}
@@ -165,22 +174,24 @@ const Semis = () => {
 
             {equiposSemis.length < 4 && <div>
                 <div id="reglascampeon" className="reglas">
-                    elegí los 4 equipos que crees que llegan a las semi finales.
-                    <br /> por cada uno que llegue a semis te suma 5 puntos.
+                    Elegí los 4 equipos que crees que llegan a las semi finales.
+                    <br /> Por cada uno que llegue a semis te suma 5 puntos.
                     seleccioná tus 4 equipos:
                 </div>
-                <div className="grid">
-
-                    {dataequiposSemis.map((key) => (
-                        <ItemSemis
-                            name={key.name}
-                            key={key.id}
-                            onEquipoClick={equipoSelectHandler}
-                            edit={edit}
-                        />
-                    ))}
-                </div>
             </div>}
+            <div className="grid">
+
+                {dataequiposSemis.map((key) => (
+                    <ItemSemis
+                        name={key.name}
+                        key={key.id}
+                        onEquipoClick={equipoSelectHandler}
+                        edit={edit}
+                        full={full}
+                    />
+                ))}
+            </div>
+
 
 
 

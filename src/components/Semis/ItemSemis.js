@@ -19,11 +19,12 @@ const ItemSemis = (props) => {
     const equipoClickHandler = () => {
         props.onEquipoClick(props.name, add);
         setAdd(!add);
-        if (add) { setitemClass('item selected') } else { setitemClass('item') }
+        if (add) { setitemClass('selected') } else { setitemClass('item') }
     }
 
     return (
-        <div className={itemClass} onClick={equipoClickHandler}>
+        <div className={itemClass} onClick={equipoClickHandler} style={{ display: props.full && itemClass === 'item' ? 'none' : 'flex' }}
+        >
             {props.name}
         </div>
     );

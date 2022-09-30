@@ -15,19 +15,20 @@ const ItemGoleadores = (props) => {
         if (!props.full) {
             props.onEquipoClick(props.name, precioequipo, add);
             setAdd(!add);
-            if (add) { setitemClass('itemgoleador selectedgoleador') } else { setitemClass('itemgoleador') }
+            if (add) { setitemClass('selectedgoleador') } else { setitemClass('itemgoleador') }
         }
         if (props.full && !add) {
             props.onEquipoClick(props.name, precioequipo, add);
             setAdd(!add);
-            if (add) { setitemClass('itemgoleador selectedgoleador') } else { setitemClass('itemgoleador') }
+            if (add) { setitemClass('selectedgoleador') } else { setitemClass('itemgoleador') }
         }
 
 
     };
 
     return (
-        <div className={itemClass} onClick={equipoClickHandler}>
+        <div className={itemClass} onClick={equipoClickHandler}
+            style={{ display: props.full && itemClass === 'itemgoleador' && (props.PrecioTotal <= 100) ? 'none' : 'flex' }}>
             <div className={'goleador'}>{props.name}</div>
             <div className={'equipo'}>{props.pais}</div>
             <div className={'preciogoleador'}>$ {props.precio}</div>

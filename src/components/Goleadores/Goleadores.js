@@ -196,6 +196,7 @@ const Goleadores = () => {
     const [PrecioTotal, setPrecioTotal] = useState(0);
     const [full, setFull] = useState(false);
 
+
     /* const equipoSelectHandler = (equipoSelected, precioEquipo,) => {
         setGoleadores(prevArray => [...prevArray, equipoSelected]);
         setPrecioTotal(PrecioTotal + Number(precioEquipo));
@@ -226,11 +227,22 @@ const Goleadores = () => {
     useEffect(() => {
         if (Goleadores.length === 5) {
             setFull(true)
+            /* document.getElementsByClassName('itemgoleador').style.cssText = "display: none";
+            document.querySelector(".itemgoleador").style.cssText = "display: none"; */
+            /* let goleadoresout = document.getElementsByClassName('itemgoleador');
+            console.log(goleadoresout);
+            goleadoresout.style.cssText = "margin: 10px"; */
         }
-        else { setFull(false) };
+        else {
+            setFull(false)
+            //aca darle display devuelta
+        };
     }, [Goleadores, full])
 
-
+    /* if (Goleadores.length === 5) {
+        let goleadoresout = document.getElementsByClassName('itemgoleador');
+        goleadoresout.style.color = "red";
+    } */
     /* if (Goleadores.length === 5) {
         setFull(true)
     }
@@ -245,6 +257,8 @@ const Goleadores = () => {
         setPrecioTotal(0)
         setedit(!edit)
     }
+
+    // estas variables eran para poner los equipos al costado del titulo
 
     const GoleadoresDisplay = Goleadores.map((equipo) => <span>{equipo}</span>);
 
@@ -264,7 +278,7 @@ const Goleadores = () => {
     return (
         <section className="sectionequipos">
             <div className="subtituloequipos">Goleadores
-                <span className={titulogoleadores}>
+                <span className={titulogoleadores} style={{ display: full && (PrecioTotal <= 100) ? 'none' : '' }}>
                     {GoleadoresDisplay}
                 </span>
                 {Goleadores.length > 0 && <span className="editar" onClick={editarSemis}>limpiar</span>}
@@ -273,10 +287,10 @@ const Goleadores = () => {
 
             <div>
                 <div id="reglascampeon" className="reglas">
-                    tenes <strong>$ 100 </strong> para elegir <strong>5 goleadores</strong> <br />
-                    los goleadores entregan <strong>2 puntos</strong> por cada gol que meten
+                    Tenes <strong>$ 100 </strong> para elegir <strong>5 goleadores</strong> <br />
+                    Los goleadores entregan <strong>2 puntos</strong> por cada gol que meten
 
-                    seleccioná tus goleadores:
+                    Seleccioná tus goleadores:
                 </div>
                 <div className="grid">
 
@@ -289,6 +303,7 @@ const Goleadores = () => {
                             onEquipoClick={equipoSelectHandler}
                             edit={edit}
                             full={full}
+                            PrecioTotal={PrecioTotal}
                         />
                     ))}
                 </div>
