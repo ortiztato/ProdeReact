@@ -1,9 +1,9 @@
-import ItemSemis from "./ItemSemis";
+import ItemSemis from "./ItemCuartos";
 
 import React, { useEffect, useState } from 'react';
 
 
-const Semis = () => {
+const Cuartos = () => {
 
     const dataequiposSemis = [
         {
@@ -144,7 +144,7 @@ const Semis = () => {
     }
 
     useEffect(() => {
-        if (equiposSemis.length === 4) {
+        if (equiposSemis.length === 8) {
             setFull(true)
         }
         else {
@@ -157,7 +157,7 @@ const Semis = () => {
     const equiposSemisDisplay = <span>Incompleto</span>;
 
     let resultado
-    if (equiposSemis.length < 4) {
+    if (equiposSemis.length < 8) {
         resultado = 'resultadoincompleto'
     } else { resultado = 'resultadocampeon' }
 
@@ -165,7 +165,7 @@ const Semis = () => {
 
     return (
         <section className="sectionequipos">
-            <div className="subtituloequipos">Equipos en Semis
+            <div className="subtituloequipos">Equipos en Cuartos
                 <span className={resultado} style={{ display: full || equiposSemis.length === 0 ? 'none' : '' }}>
                     {equiposSemisDisplay}
                 </span>
@@ -173,9 +173,9 @@ const Semis = () => {
 
             </div>
 
-            {equiposSemis.length < 4 && <div>
+            {equiposSemis.length < 8 && <div>
                 <div id="reglascampeon" className="reglas">
-                    Elegí los 4 equipos que crees que llegan a las semi finales.
+                    Elegí los 8 equipos que crees que llegan a los cuartos de final.
                     <br /> Por cada uno que llegue a semis te suma 5 puntos.
 
                 </div>
@@ -202,4 +202,4 @@ const Semis = () => {
     );
 };
 
-export default Semis;
+export default Cuartos;

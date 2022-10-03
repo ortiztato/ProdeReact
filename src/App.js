@@ -6,7 +6,10 @@ import Goleadores from './components/Goleadores/Goleadores';
 import Lamentable from './components/Lamentable/Lamentable';
 import Partidos from './components/partidos/Partidos';
 import Revelacion from './components/Revelacion/Revelacion';
+import Octavos from './components/Octavos/Octavos';
 import Semis from './components/Semis/Semis';
+import Cuartos from './components/Cuartos/Cuartos';
+import Final from './components/Final/Final';
 
 function App() {
   return (
@@ -19,9 +22,13 @@ function App() {
       <Desilusion />
       <Revelacion />
       <Lamentable />
-      <Semis />
+
       <Goleadores />
       <Partidos />
+      <Octavos />
+      <Cuartos />
+      <Semis />
+      <Final />
       <div className='divsubmit'>
         <label for="fname">Nombre:</label><br />
         <input

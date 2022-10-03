@@ -1,5 +1,6 @@
 /* import React, { useState } from 'react'; */
 import Grupo from './Grupo';
+import classes from './Partidos.module.css'
 
 const Partidos = () => {
 
@@ -72,17 +73,19 @@ const Partidos = () => {
 
     ]
 
+
     return (
-        <section className="sectionequipos">
-            <div className="subtituloequipos">Partidos
+        <section className={classes.sectionequipos}>
+            <div className={classes.subtituloequipos}>Partidos
             </div>
 
             <div>
-                <div id="reglascampeon" className="reglas">
+                <div id="reglascampeon" className={classes.reglas}>
                     Seleccioná quien gana o si es empate.<br /> Tenes 7 elecciones por grupo (una doble eleccion en algun partido del grupo)
                 </div>
 
-                <div className="grid">
+                <div className={classes.grid}>
+
                     {Grupos.map((key) => (
                         <Grupo
                             id={key.id}
@@ -96,9 +99,6 @@ const Partidos = () => {
                         />
 
                     ))}
-
-
-
 
                 </div>
             </div>
