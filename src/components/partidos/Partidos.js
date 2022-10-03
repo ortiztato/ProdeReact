@@ -81,7 +81,7 @@ const Partidos = () => {
 
             <div>
                 <div id="reglascampeon" className={classes.reglas}>
-                    Seleccioná quien gana o si es empate.<br /> Tenes 7 elecciones por grupo (una doble eleccion en algun partido del grupo)
+                    Seleccioná quien gana o si es empate.<br />Entrega <strong>2 puntos</strong> por cada acierto. <br /> Tenes 7 elecciones por grupo (una doble eleccion en algun partido del grupo)
                 </div>
 
                 <div className={classes.grid}>

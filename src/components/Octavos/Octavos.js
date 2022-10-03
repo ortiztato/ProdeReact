@@ -2,6 +2,7 @@ import ItemSemis from "./ItemOctavos";
 
 import React, { useEffect, useState } from 'react';
 
+import { Transition } from "react-transition-group/";
 
 const Octavos = () => {
 
@@ -173,13 +174,20 @@ const Octavos = () => {
 
             </div>
 
-            {equiposSemis.length < 16 && <div>
-                <div id="reglascampeon" className="reglas">
-                    Elegí los 16 equipos que crees que llegan a los octavos de final.
-                    <br /> Por cada uno que llegue a semis te suma 2 puntos.
+            <Transition in={equiposSemis.length < 16} timeout={200} mountOnEnter unmountOnExit>
+                {state => (
 
-                </div>
-            </div>}
+                    <div style={{
+                        transition: 'opacity 0.6s',
+                        opacity: state === 'entered' ? 1 : 0
+                    }}>
+                        <div id="reglascampeon" className="reglas">
+                            Elegí los 16 equipos que crees que llegan a los octavos de final.
+                            <br /> Por cada uno que llegue a semis te suma 2 puntos.
+
+                        </div>
+                    </div>)}
+            </Transition>
             <div className="grid">
 
                 {dataequiposSemis.map((key) => (

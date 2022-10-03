@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { Transition } from "react-transition-group/";
+
 
 const ItemGoleadores = (props) => {
 
@@ -26,6 +28,7 @@ const ItemGoleadores = (props) => {
 
     };
 
+    /*  RENDER ANTERIOR AL TRANSITION (BORRAR SI QUEDA BIEN)
     return (
         <div className={itemClass} onClick={equipoClickHandler}
             style={{ display: props.full && itemClass === 'itemgoleador' && (props.PrecioTotal <= 100) ? 'none' : 'flex' }}>
@@ -33,6 +36,24 @@ const ItemGoleadores = (props) => {
             <div className={'equipo'}>{props.pais}</div>
             <div className={'preciogoleador'}>$ {props.precio}</div>
         </div>
+    ); */
+
+    return (
+        <Transition in={!(props.full && itemClass === 'itemgoleador' && (props.PrecioTotal <= 100))} timeout={200} mountOnEnter unmountOnExit>
+            {state => (
+                <div style={{
+                    transition: 'opacity 0.6s',
+                    opacity: state === 'entered' ? 1 : 0
+                }}>
+                    <div className={itemClass} onClick={equipoClickHandler}
+                    >
+                        <div className={'goleador'}>{props.name}</div>
+                        <div className={'equipo'}>{props.pais}</div>
+                        <div className={'preciogoleador'}>$ {props.precio}</div>
+                    </div>
+                </div>
+            )}
+        </Transition>
     );
 };
 

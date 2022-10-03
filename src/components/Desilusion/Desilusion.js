@@ -76,8 +76,8 @@ const Desilusion = () => {
                         <div id="reglascampeon" className="reglas">
                             Elegí el equipo desilusion del mundial (si le va bien, perdés) <br /> según su resultado te <strong>RESTA </strong>
                             los siguientes puntos: <div className="puntos">
-                                <br /> 1ro: 25 <br /> 2do: 20 <br /> 3ro: 16 <br /> 4to: 13 <br /> 5tos:10 <br /> 9nos:
-                                7 <br />17mos: 3 <br /> 25tos: 1
+                                <br /> 1ro: -13 <br /> 2do: -10 <br /> 3ro: -8 <br /> 4to: -6 <br /> 5tos: -4 <br /> 9nos:
+                                -2 <br />17mos: 0 <br /> 25tos: 0
                             </div>
                             Seleccioná tu equipo:
                         </div>

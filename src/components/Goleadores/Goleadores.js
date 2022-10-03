@@ -288,8 +288,8 @@ const Goleadores = () => {
             <div>
                 <div id="reglascampeon" className="reglas">
                     Tenes <strong>$ 100 </strong> para elegir <strong>5 goleadores</strong> <br />
-                    Los goleadores entregan <strong>2 puntos</strong> por cada gol que meten
-
+                    Los goleadores entregan <strong>1 punto</strong> por cada gol que meten
+                    <br />
                     Seleccioná tus goleadores:
                 </div>
                 <div className="grid">
