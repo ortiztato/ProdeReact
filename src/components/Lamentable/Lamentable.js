@@ -2,6 +2,8 @@ import ItemLamentable from "./ItemLamentable";
 
 import React, { useState } from 'react';
 
+import { Transition } from "react-transition-group/";
+
 
 const Lamentable = () => {
 
@@ -135,29 +137,33 @@ const Lamentable = () => {
                 {equipoLamentable && <span className="editar" onClick={editarLamentable}>editar</span>}
             </div>
 
-            {!equipoLamentable &&
-                <div>
-                    <div id="reglascampeon" className="reglas">
-                        Elegí el equipo lamentable del mundial (si le va bien, perdés) <br /> Según su resultado <strong>RESTA</strong> los
-                        siguientes
-                        puntos: <div className="puntos">
-                            <br /> 1ro: 25 <br /> 2do: 20 <br /> 3ro: 16 <br /> 4to: 13 <br /> 5tos:10 <br /> 9nos:
-                            7 <br />17mos: 3 <br /> 25tos: 1
+            <Transition in={!equipoLamentable} timeout={200} mountOnEnter unmountOnExit>
+                {state => (
+                    <div style={{
+                        transition: 'opacity 0.6s',
+                        opacity: state === 'entered' ? 1 : 0
+                    }}>
+                        <div id="reglascampeon" className="reglas">
+                            Elegí el equipo lamentable del mundial (si le va bien, perdés) <br /> Según su resultado <strong>RESTA</strong> los
+                            siguientes
+                            puntos: <div className="puntos">
+                                <br /> 1ro: 25 <br /> 2do: 20 <br /> 3ro: 16 <br /> 4to: 13 <br /> 5tos:10 <br /> 9nos:
+                                7 <br />17mos: 3 <br /> 25tos: 1
+                            </div>
+                            Seleccioná tu equipo:
                         </div>
-                        Seleccioná tu equipo:
-                    </div>
-                    <div className="grid">
+                        <div className="grid">
 
-                        {equiposLamentable.map((key) => (
-                            <ItemLamentable
-                                name={key.name}
-                                key={key.id}
-                                onEquipoClick={equipoSelectHandler}
-                            />
-                        ))}
+                            {equiposLamentable.map((key) => (
+                                <ItemLamentable
+                                    name={key.name}
+                                    key={key.id}
+                                    onEquipoClick={equipoSelectHandler}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
-            }
+                )}</Transition>
 
         </section>
     );

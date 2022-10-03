@@ -1,4 +1,5 @@
 import ItemGanador from "./ItemGanador";
+import { Transition } from "react-transition-group/";
 
 import React, { useState } from 'react';
 
@@ -136,29 +137,33 @@ const Ganador = () => {
                 {equipoGanador && <span className="editar" onClick={editarCampeon}>editar</span>}
             </div>
 
-            {!equipoGanador &&
-                <div>
-                    <div id="reglascampeon" className="reglas">
-                        Elegí el equipo campeón del mundial, según su resultado entrega los siguientes puntos: <div className="puntos">
-                            <br /> 1ro: 25 <br /> 2do: 20 <br /> 3ro: 16 <br /> 4to: 13 <br /> 5tos:10 <br /> 9nos:
-                            7 <br />17mos: 3 <br /> 25tos: 1
+            <Transition in={!equipoGanador} timeout={200} mountOnEnter unmountOnExit>
+                {state => (
+                    <div style={{
+                        transition: 'opacity 0.6s',
+                        opacity: state === 'entered' ? 1 : 0
+                    }}>
+                        <div id="reglascampeon" className="reglas">
+                            Elegí el equipo campeón del mundial, según su resultado entrega los siguientes puntos: <div className="puntos">
+                                <br /> 1ro: 25 <br /> 2do: 20 <br /> 3ro: 16 <br /> 4to: 13 <br /> 5tos:10 <br /> 9nos:
+                                7 <br />17mos: 3 <br /> 25tos: 1
+                            </div>
+                            Seleccioná tu equipo:
                         </div>
-                        Seleccioná tu equipo:
-                    </div>
-                    <div className="grid">
+                        <div className="grid">
 
-                        {equiposganadores.map((key) => (
-                            <ItemGanador
-                                name={key.name}
-                                key={key.id}
-                                onEquipoClick={equipoSelectHandler}
-                            />
-                        ))}
+                            {equiposganadores.map((key) => (
+                                <ItemGanador
+                                    name={key.name}
+                                    key={key.id}
+                                    onEquipoClick={equipoSelectHandler}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
-            }
+                )}</Transition>
 
-        </section>
+        </section >
     );
 };
 

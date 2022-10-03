@@ -2,6 +2,8 @@ import ItemDesilusion from "./ItemDesilusion";
 
 import React, { useState } from 'react';
 
+import { Transition } from "react-transition-group/";
+
 
 const Desilusion = () => {
 
@@ -65,28 +67,32 @@ const Desilusion = () => {
                 {equipoDesilusion && <span className="editar" onClick={editarDesilusion}>editar</span>}
             </div>
 
-            {!equipoDesilusion &&
-                <div>
-                    <div id="reglascampeon" className="reglas">
-                        Elegí el equipo desilusion del mundial (si le va bien, perdés) <br /> según su resultado te <strong>RESTA </strong>
-                        los siguientes puntos: <div className="puntos">
-                            <br /> 1ro: 25 <br /> 2do: 20 <br /> 3ro: 16 <br /> 4to: 13 <br /> 5tos:10 <br /> 9nos:
-                            7 <br />17mos: 3 <br /> 25tos: 1
+            <Transition in={!equipoDesilusion} timeout={200} mountOnEnter unmountOnExit>
+                {state => (
+                    <div style={{
+                        transition: 'opacity 0.6s',
+                        opacity: state === 'entered' ? 1 : 0
+                    }}>
+                        <div id="reglascampeon" className="reglas">
+                            Elegí el equipo desilusion del mundial (si le va bien, perdés) <br /> según su resultado te <strong>RESTA </strong>
+                            los siguientes puntos: <div className="puntos">
+                                <br /> 1ro: 25 <br /> 2do: 20 <br /> 3ro: 16 <br /> 4to: 13 <br /> 5tos:10 <br /> 9nos:
+                                7 <br />17mos: 3 <br /> 25tos: 1
+                            </div>
+                            Seleccioná tu equipo:
                         </div>
-                        Seleccioná tu equipo:
-                    </div>
-                    <div className="grid">
+                        <div className="grid">
 
-                        {equiposdesilusion.map((key) => (
-                            <ItemDesilusion
-                                name={key.name}
-                                key={key.id}
-                                onEquipoClick={equipoSelectHandler}
-                            />
-                        ))}
+                            {equiposdesilusion.map((key) => (
+                                <ItemDesilusion
+                                    name={key.name}
+                                    key={key.id}
+                                    onEquipoClick={equipoSelectHandler}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
-            }
+                )}</Transition>
 
         </section>
     );

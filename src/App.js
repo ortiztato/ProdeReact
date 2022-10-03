@@ -11,6 +11,8 @@ import Semis from './components/Semis/Semis';
 import Cuartos from './components/Cuartos/Cuartos';
 import Final from './components/Final/Final';
 
+
+
 function App() {
   return (
     <div className="App">
