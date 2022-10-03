@@ -35,6 +35,12 @@ function App() {
           name="usuario"
           type="text"
         /* onChange={this.handleInputChange} */ />
+        <br />
+        <label for="fname">Liga:</label><br />
+        <input
+          name="usuario"
+          type="text"
+        /* onChange={this.handleInputChange} */ />
 
         <button className='bidsubmitbutton'> ENVIAR </button>
       </div>
