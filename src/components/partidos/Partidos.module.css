@@ -18,15 +18,15 @@
     display: grid;
     grid-template-columns: repeat(2, 40%);
     width: 100%;
-    gap: 1px;
+    gap: 2rem;
     justify-content: center;
     transition: 1s;
-    margin-bottom: 10px;
+    margin: 2rem 0 2rem;
     padding: 0;
 }
 
 .grupo {
-    margin-top: 2rem;
+    /*  margin-top: 2rem; */
 }
 
 .titulogrupo {
@@ -46,6 +46,7 @@
 .nombreequipo {
     width: 6rem;
     text-align: center;
+    font-size: 0.8rem;
 }
 
 .emojigrupoo {
