@@ -176,7 +176,7 @@ const Semis = () => {
             {equiposSemis.length < 4 && <div>
                 <div id="reglascampeon" className="reglas">
                     Elegí los 4 equipos que crees que llegan a las semi finales.
-                    <br /> Por cada uno que llegue a semis te suma 5 puntos.
+                    <br /> Por cada uno que llegue a semis te suma 4 puntos.
 
                 </div>
             </div>}

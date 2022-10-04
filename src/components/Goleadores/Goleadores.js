@@ -260,12 +260,12 @@ const Goleadores = () => {
 
     // estas variables eran para poner los equipos al costado del titulo
 
-    const GoleadoresDisplay = Goleadores.map((equipo) => <span>{equipo}</span>);
+    /* const GoleadoresDisplay = Goleadores.map((equipo) => <span>{equipo}</span>); */
 
     let titulogoleadores
     if (Goleadores.length < 5) {
-        titulogoleadores = 'resultadoincompleto'
-    } else if (PrecioTotal <= 100) { titulogoleadores = 'resultadocampeon' } else { titulogoleadores = 'resultadoerror' }
+        titulogoleadores = 'resultadoincompletogol'
+    } else if (PrecioTotal <= 100) { titulogoleadores = 'resultadocampeongol' } else { titulogoleadores = 'resultadoerrorgol' }
 
 
     let presupuesto
@@ -276,10 +276,10 @@ const Goleadores = () => {
 
 
     return (
-        <section className="sectionequipos">
+        <section className="sectiongoleadores">
             <div className="subtituloequipos">Goleadores
-                <span className={titulogoleadores} style={{ display: full && (PrecioTotal <= 100) ? 'none' : '' }}>
-                    {GoleadoresDisplay}
+                <span className={titulogoleadores} style={{ display: (full && (PrecioTotal <= 100)) || Goleadores.length === 0 ? 'none' : '' }}>
+                    Incompleto
                 </span>
                 {Goleadores.length > 0 && <span className="editar" onClick={editarSemis}>limpiar</span>}
 
@@ -292,7 +292,7 @@ const Goleadores = () => {
                     <br />
                     Seleccioná tus goleadores:
                 </div>
-                <div className="grid">
+                <div className="gridgoleadores">
 
                     {dataGoleadores.map((key) => (
                         <ItemGoleadores

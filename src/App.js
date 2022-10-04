@@ -32,13 +32,13 @@ function App() {
       <Semis />
       <Final />
       <div className='divsubmit'>
-        <label for="fname">Nombre:</label><br />
+        <label>Nombre:</label><br />
         <input
           name="usuario"
           type="text"
         /* onChange={this.handleInputChange} */ />
         <br />
-        <label for="fname">Liga:</label><br />
+        <label>Liga:</label><br />
         <input
           name="usuario"
           type="text"
