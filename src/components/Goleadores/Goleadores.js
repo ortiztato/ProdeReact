@@ -237,7 +237,8 @@ const Goleadores = () => {
 
         }
         else {
-            setFull(false)
+            setFull(false);
+            ctx.goleadores()
             //aca darle display devuelta
         };
     }, [Goleadores, full, PrecioTotal, ctx])
@@ -259,7 +260,7 @@ const Goleadores = () => {
         setGoleadores([]);
         setPrecioTotal(0)
         setedit(!edit)
-        ctx.goleadores()
+
     }
 
     // estas variables eran para poner los equipos al costado del titulo

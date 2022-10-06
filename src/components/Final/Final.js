@@ -1,6 +1,7 @@
 import ItemSemis from "./ItemFinal";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import InputsContext from "../../store/inputs-context";
 
 
 const Final = () => {
@@ -115,6 +116,8 @@ const Final = () => {
 
     ]
 
+    const ctx = useContext(InputsContext);
+
     const [equiposSemis, setEquiposSemis] = useState([]);
     const [edit, setedit] = useState(false);
     const [full, setFull] = useState(false);
@@ -146,9 +149,11 @@ const Final = () => {
     useEffect(() => {
         if (equiposSemis.length === 2) {
             setFull(true)
+            ctx.final(equiposSemis)
         }
         else {
             setFull(false)
+            ctx.final()
         };
     }, [equiposSemis, full])
 

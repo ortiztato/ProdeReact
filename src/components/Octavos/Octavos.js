@@ -1,6 +1,7 @@
 import ItemSemis from "./ItemOctavos";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import InputsContext from "../../store/inputs-context";
 
 import { Transition } from "react-transition-group/";
 
@@ -116,6 +117,8 @@ const Octavos = () => {
 
     ]
 
+    const ctx = useContext(InputsContext);
+
     const [equiposSemis, setEquiposSemis] = useState([]);
     const [edit, setedit] = useState(false);
     const [full, setFull] = useState(false);
@@ -142,14 +145,17 @@ const Octavos = () => {
     const editarSemis = () => {
         setEquiposSemis([]);
         setedit(!edit)
+
     }
 
     useEffect(() => {
         if (equiposSemis.length === 16) {
-            setFull(true)
+            setFull(true);
+            ctx.octavos(equiposSemis)
         }
         else {
-            setFull(false)
+            setFull(false);
+            ctx.octavos()
         };
     }, [equiposSemis, full])
 

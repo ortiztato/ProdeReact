@@ -51,9 +51,9 @@ const Partido = (props) => {
             setOkpartido(false)
         }
 
-        props.setPartidoHandler(seleccionPartido)
+        props.setPartidoHandler(seleccionPartido, okpartido)
 
-    }, [seleccionPartido, props])
+    }, [seleccionPartido, okpartido, props])
 
 
 

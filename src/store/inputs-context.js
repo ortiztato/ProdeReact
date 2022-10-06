@@ -8,6 +8,10 @@ const InputsContext = React.createContext({
   lamentable: (inputLamentable) => { },
   goleadores: (inputGoleadores) => { },
   partidos: (inputPartidos) => { },
+  octavos: (inputOctavos) => { },
+  cuartos: (inputCuartos) => { },
+  semis: (inputSemis) => { },
+  final: (inputFinal) => { },
   submitForm: () => { },
 
 });
@@ -20,6 +24,10 @@ export const InputsContextProvider = (props) => {
   const [inputLamentable, setInputLamentable] = useState('lamentable');
   const [inputGoleadores, setInputGoleadores] = useState('goleadores');
   const [inputPartidos, setInputPartidos] = useState('partidos');
+  const [inputOctavos, setInputOctavos] = useState('octavos');
+  const [inputCuartos, setInputCuartos] = useState('cuartos');
+  const [inputSemis, setInputSemis] = useState('semis');
+  const [inputFinal, setInputFinal] = useState('final');
 
 
   const ganadorHandler = (inputGanador) => {
@@ -46,6 +54,22 @@ export const InputsContextProvider = (props) => {
     setInputPartidos(inputPartidos);
   };
 
+  const octavosHandler = (inputOctavos) => {
+    setInputOctavos(inputOctavos);
+  };
+
+  const cuartosHandler = (inputCuartos) => {
+    setInputCuartos(inputCuartos);
+  };
+
+  const semisHandler = (inputSemis) => {
+    setInputSemis(inputSemis);
+  };
+
+  const finalHandler = (inputFinal) => {
+    setInputFinal(inputFinal);
+  };
+
 
   // esta funcion que concatene todos los objetos y la postee
 
@@ -56,6 +80,10 @@ export const InputsContextProvider = (props) => {
     console.log(inputLamentable)
     console.log(inputGoleadores)
     console.log(inputPartidos)
+    console.log(inputOctavos)
+    console.log(inputCuartos)
+    console.log(inputSemis)
+    console.log(inputFinal)
   }
 
 
@@ -71,6 +99,10 @@ export const InputsContextProvider = (props) => {
         lamentable: lamentableHandler,
         goleadores: goleadoresHandler,
         partidos: partidosHandler,
+        octavos: octavosHandler,
+        cuartos: cuartosHandler,
+        semis: semisHandler,
+        final: finalHandler,
         submitForm: submitFormHandler,
 
       }}

@@ -2,6 +2,9 @@
 import Grupo from './Grupo';
 import classes from './Partidos.module.css'
 
+import { useState, useEffect, useContext } from 'react';
+import InputsContext from "../../store/inputs-context";
+
 const Partidos = () => {
 
     const Grupos = [
@@ -73,6 +76,59 @@ const Partidos = () => {
 
     ]
 
+    const ctx = useContext(InputsContext);
+
+    const [grupo1, setGrupo1] = useState([]);
+    const [grupo2, setGrupo2] = useState([]);
+    const [grupo3, setGrupo3] = useState([]);
+    const [grupo4, setGrupo4] = useState([]);
+    const [grupo5, setGrupo5] = useState([]);
+    const [grupo6, setGrupo6] = useState([]);
+    const [grupo7, setGrupo7] = useState([]);
+    const [grupo8, setGrupo8] = useState([]);
+    const [seleccionGrupo, setSeleccionGrupo] = useState([]);
+
+    const setGrupoHandler1 = (inputGrupo, id) => {
+        if (id === 1) { setGrupo1(inputGrupo) };
+        if (id === 2) { setGrupo2(inputGrupo) };
+        if (id === 3) { setGrupo3(inputGrupo) };
+        if (id === 4) { setGrupo4(inputGrupo) };
+        if (id === 5) { setGrupo5(inputGrupo) };
+        if (id === 6) { setGrupo6(inputGrupo) };
+        if (id === 7) { setGrupo7(inputGrupo) };
+        if (id === 8) { setGrupo8(inputGrupo) };
+    }
+
+    const addGrupos = (grupo1, grupo2, grupo3, grupo4, grupo5, grupo6, grupo7, grupo8) => {
+        let arr = [];
+        grupo1.map((item) => arr.push(item))
+        grupo2.map((item) => arr.push(item))
+        grupo3.map((item) => arr.push(item))
+        grupo4.map((item) => arr.push(item))
+        grupo5.map((item) => arr.push(item))
+        grupo6.map((item) => arr.push(item))
+        grupo7.map((item) => arr.push(item))
+        grupo8.map((item) => arr.push(item))
+        arr.filter(n => n)
+        setSeleccionGrupo(arr)
+
+    }
+
+    useEffect(() => {
+        addGrupos(grupo1, grupo2, grupo3, grupo4, grupo5, grupo6, grupo7, grupo8);
+
+    }, [grupo1, grupo2, grupo3, grupo4, grupo5, grupo6, grupo7, grupo8])
+
+    useEffect(() => {
+        if (seleccionGrupo.length === 56) {
+            ctx.partidos(seleccionGrupo)
+        }
+        else { ctx.partidos() }
+    }, [seleccionGrupo])
+
+
+
+
 
     return (
         <section className={classes.sectionequipos}>
@@ -94,6 +150,7 @@ const Partidos = () => {
                             equipo2={key.equipo2}
                             equipo3={key.equipo3}
                             equipo4={key.equipo4}
+                            setGrupoHandler={setGrupoHandler1}
 
 
                         />

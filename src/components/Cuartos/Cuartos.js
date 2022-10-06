@@ -1,6 +1,7 @@
 import ItemSemis from "./ItemCuartos";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import InputsContext from "../../store/inputs-context";
 
 
 const Cuartos = () => {
@@ -115,6 +116,8 @@ const Cuartos = () => {
 
     ]
 
+    const ctx = useContext(InputsContext);
+
     const [equiposSemis, setEquiposSemis] = useState([]);
     const [edit, setedit] = useState(false);
     const [full, setFull] = useState(false);
@@ -140,15 +143,18 @@ const Cuartos = () => {
 
     const editarSemis = () => {
         setEquiposSemis([]);
-        setedit(!edit)
+        setedit(!edit);
+
     }
 
     useEffect(() => {
         if (equiposSemis.length === 8) {
-            setFull(true)
+            setFull(true);
+            ctx.cuartos(equiposSemis)
         }
         else {
             setFull(false)
+            ctx.cuartos()
         };
     }, [equiposSemis, full])
 

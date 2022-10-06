@@ -19,25 +19,38 @@ const Grupo = (props) => {
     const [partido4, setPartido4] = useState([]);
     const [partido5, setPartido5] = useState([]);
     const [partido6, setPartido6] = useState([]);
+    const [partido1ok, setPartido1ok] = useState(false);
+    const [partido2ok, setPartido2ok] = useState(false);
+    const [partido3ok, setPartido3ok] = useState(false);
+    const [partido4ok, setPartido4ok] = useState(false);
+    const [partido5ok, setPartido5ok] = useState(false);
+    const [partido6ok, setPartido6ok] = useState(false);
+    const [grupoOk, setGrupoOk] = useState(false);
     const [seleccionGrupo, setSeleccionGrupo] = useState([]);
 
-    const setPartidoHandler1 = (partido) => {
-        setPartido1(partido)
+    const setPartidoHandler1 = (partido, partidoOk) => {
+        setPartido1(partido);
+        setPartido1ok(partidoOk)
     }
-    const setPartidoHandler2 = (partido) => {
-        setPartido2(partido)
+    const setPartidoHandler2 = (partido, partidoOk) => {
+        setPartido2(partido);
+        setPartido2ok(partidoOk)
     }
-    const setPartidoHandler3 = (partido) => {
-        setPartido3(partido)
+    const setPartidoHandler3 = (partido, partidoOk) => {
+        setPartido3(partido);
+        setPartido3ok(partidoOk)
     }
-    const setPartidoHandler4 = (partido) => {
-        setPartido4(partido)
+    const setPartidoHandler4 = (partido, partidoOk) => {
+        setPartido4(partido);
+        setPartido4ok(partidoOk)
     }
-    const setPartidoHandler5 = (partido) => {
-        setPartido5(partido)
+    const setPartidoHandler5 = (partido, partidoOk) => {
+        setPartido5(partido);
+        setPartido5ok(partidoOk)
     }
-    const setPartidoHandler6 = (partido) => {
-        setPartido6(partido)
+    const setPartidoHandler6 = (partido, partidoOk) => {
+        setPartido6(partido);
+        setPartido6ok(partidoOk)
     }
 
 
@@ -66,8 +79,21 @@ const Grupo = (props) => {
     }
 
     useEffect(() => {
-        addPartidos(partido1, partido2, partido3, partido4, partido5, partido6)
+        addPartidos(partido1, partido2, partido3, partido4, partido5, partido6);
+
     }, [partido1, partido2, partido3, partido4, partido5, partido6])
+
+    useEffect(() => {
+
+        if (partido1ok && partido2ok && partido3ok && partido4ok && partido5ok && partido6ok && seleccionGrupo.length === 7) {
+            setGrupoOk(true);
+        } else { setGrupoOk(false); }
+    }, [partido1ok, partido2ok, partido3ok, partido4ok, partido5ok, partido6ok, seleccionGrupo])
+
+    useEffect(() => {
+        props.setGrupoHandler(seleccionGrupo, +props.id)
+    }, [grupoOk])
+
 
 
 
@@ -78,7 +104,8 @@ const Grupo = (props) => {
                 <div className={classes.emojigrupoo}>{'   '}
                     {seleccionGrupo.length > 0 && seleccionGrupo.length < 7 && '🟡'}
                     {seleccionGrupo.length === 6 && 'está el doble?​'}
-                    {seleccionGrupo.length === 7 && '🟢​'}
+                    {seleccionGrupo.length === 7 && grupoOk && '🟢​'}
+                    {seleccionGrupo.length === 7 && !grupoOk && '🔴​ algun partido esta mal amigo'}
                     {seleccionGrupo.length > 7 && '🔴​ excedido​'}</div></div>
             <Partido equipo1={props.equipo1} equipo2={props.equipo2} id={id1} setPartidoHandler={setPartidoHandler1} />
             <Partido equipo1={props.equipo3} equipo2={props.equipo4} id={id2} setPartidoHandler={setPartidoHandler2} />
