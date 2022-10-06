@@ -28,6 +28,24 @@ export const InputsContextProvider = (props) => {
   const [inputCuartos, setInputCuartos] = useState('cuartos');
   const [inputSemis, setInputSemis] = useState('semis');
   const [inputFinal, setInputFinal] = useState('final');
+  const [inputNombre, setInputNombre] = useState('nombre');
+  const [inputLiga, setInputLiga] = useState('liga');
+
+
+  const globalInput = {
+    Nombre: inputNombre,
+    Liga: inputLiga,
+    Ganador: inputGanador,
+    Desilusion: inputDesilusion,
+    Revelacion: inputRevelacion,
+    Lamentable: inputLamentable,
+    Goleadores: inputGoleadores,
+    Partidos: inputPartidos,
+    Octavos: inputOctavos,
+    Cuartos: inputCuartos,
+    Semis: inputSemis,
+    Final: inputFinal,
+  }
 
 
   const ganadorHandler = (inputGanador) => {
@@ -70,20 +88,19 @@ export const InputsContextProvider = (props) => {
     setInputFinal(inputFinal);
   };
 
+  const nombreHandler = (inputNombre) => {
+    setInputNombre(inputNombre);
+  };
+
+  const ligaHandler = (inputLiga) => {
+    setInputLiga(inputLiga);
+  };
+
 
   // esta funcion que concatene todos los objetos y la postee
 
   const submitFormHandler = () => {
-    console.log(inputGanador)
-    console.log(inputDesilusion)
-    console.log(inputRevelacion)
-    console.log(inputLamentable)
-    console.log(inputGoleadores)
-    console.log(inputPartidos)
-    console.log(inputOctavos)
-    console.log(inputCuartos)
-    console.log(inputSemis)
-    console.log(inputFinal)
+    console.log(globalInput)
   }
 
 
@@ -103,6 +120,8 @@ export const InputsContextProvider = (props) => {
         cuartos: cuartosHandler,
         semis: semisHandler,
         final: finalHandler,
+        nombre: nombreHandler,
+        liga: ligaHandler,
         submitForm: submitFormHandler,
 
       }}

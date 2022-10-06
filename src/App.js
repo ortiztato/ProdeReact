@@ -20,6 +20,14 @@ function App() {
 
   const ctx = useContext(InputsContext);
 
+  const nombreHandler = (event) => {
+    ctx.nombre(event.target.value);
+  };
+
+  const ligaHandler = (event) => {
+    ctx.liga(event.target.value);
+  };
+
   return (
     <div className="App">
 
@@ -41,13 +49,13 @@ function App() {
         <input
           name="usuario"
           type="text"
-        /* onChange={this.handleInputChange} */ />
+          onChange={nombreHandler} />
         <br />
         <label>Liga:</label><br />
         <input
           name="usuario"
           type="text"
-        /* onChange={this.handleInputChange} */ />
+          onChange={ligaHandler} />
 
         <button className='bidsubmitbutton' onClick={ctx.submitForm}> ENVIAR </button>
       </div>
