@@ -1,7 +1,8 @@
 import ItemGanador from "./ItemGanador";
 import { Transition } from "react-transition-group/";
 
-import React, { useState } from 'react';
+import InputsContext from "../../store/inputs-context";
+import React, { useState, useContext } from 'react';
 
 
 const Ganador = () => {
@@ -115,15 +116,18 @@ const Ganador = () => {
         },
 
     ]
+    const ctx = useContext(InputsContext);
 
     const [equipoGanador, setEquipoGanador] = useState();
 
     const equipoSelectHandler = (equipoSelected) => {
         setEquipoGanador(equipoSelected);
+        ctx.ganador(equipoSelected);
     };
 
     const editarCampeon = () => {
         setEquipoGanador();
+        ctx.ganador();
 
     }
 

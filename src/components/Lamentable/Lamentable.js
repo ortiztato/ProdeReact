@@ -1,6 +1,7 @@
 import ItemLamentable from "./ItemLamentable";
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import InputsContext from "../../store/inputs-context";
 
 import { Transition } from "react-transition-group/";
 
@@ -117,14 +118,18 @@ const Lamentable = () => {
 
     ]
 
+    const ctx = useContext(InputsContext);
+
     const [equipoLamentable, setequipoLamentable] = useState();
 
     const equipoSelectHandler = (equipoSelected) => {
         setequipoLamentable(equipoSelected);
+        ctx.lamentable(equipoSelected);
     };
 
     const editarLamentable = () => {
         setequipoLamentable();
+        ctx.lamentable();
 
     }
 

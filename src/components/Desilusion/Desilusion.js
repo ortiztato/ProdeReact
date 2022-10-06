@@ -1,8 +1,10 @@
 import ItemDesilusion from "./ItemDesilusion";
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { Transition } from "react-transition-group/";
+
+import InputsContext from "../../store/inputs-context";
 
 
 const Desilusion = () => {
@@ -46,15 +48,18 @@ const Desilusion = () => {
         }
 
     ]
+    const ctx = useContext(InputsContext);
 
     const [equipoDesilusion, setequipoDesilusion] = useState();
 
     const equipoSelectHandler = (equipoSelected) => {
         setequipoDesilusion(equipoSelected);
+        ctx.desilusion(equipoSelected);
     };
 
     const editarDesilusion = () => {
         setequipoDesilusion();
+        ctx.desilusion();
 
     }
 

@@ -11,9 +11,15 @@ import Semis from './components/Semis/Semis';
 import Cuartos from './components/Cuartos/Cuartos';
 import Final from './components/Final/Final';
 
+import InputsContext from './store/inputs-context';
+import React, { useContext } from 'react';
+
 
 
 function App() {
+
+  const ctx = useContext(InputsContext);
+
   return (
     <div className="App">
 
@@ -24,7 +30,6 @@ function App() {
       <Desilusion />
       <Revelacion />
       <Lamentable />
-
       <Goleadores />
       <Partidos />
       <Octavos />
@@ -44,7 +49,7 @@ function App() {
           type="text"
         /* onChange={this.handleInputChange} */ />
 
-        <button className='bidsubmitbutton'> ENVIAR </button>
+        <button className='bidsubmitbutton' onClick={ctx.submitForm}> ENVIAR </button>
       </div>
 
 

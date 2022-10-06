@@ -1,6 +1,8 @@
 import ItemRevelacion from "./ItemRevelacion";
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import InputsContext from "../../store/inputs-context";
+
 
 import { Transition } from "react-transition-group/";
 
@@ -82,14 +84,18 @@ const Revelacion = () => {
 
     ]
 
+    const ctx = useContext(InputsContext);
+
     const [equipoRevelacion, setequipoRevelacion] = useState();
 
     const equipoSelectHandler = (equipoSelected) => {
         setequipoRevelacion(equipoSelected);
+        ctx.revelacion(equipoSelected)
     };
 
     const editarRevelacion = () => {
         setequipoRevelacion();
+        ctx.revelacion()
 
     }
 

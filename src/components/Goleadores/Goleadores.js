@@ -1,6 +1,8 @@
 import ItemGoleadores from "./ItemGoleadores";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+
+import InputsContext from "../../store/inputs-context";
 
 
 const Goleadores = () => {
@@ -191,6 +193,8 @@ const Goleadores = () => {
 
     ]
 
+    const ctx = useContext(InputsContext);
+
     const [Goleadores, setGoleadores] = useState([]);
     const [edit, setedit] = useState(false);
     const [PrecioTotal, setPrecioTotal] = useState(0);
@@ -226,18 +230,17 @@ const Goleadores = () => {
 
     useEffect(() => {
         if (Goleadores.length === 5) {
-            setFull(true)
-            /* document.getElementsByClassName('itemgoleador').style.cssText = "display: none";
-            document.querySelector(".itemgoleador").style.cssText = "display: none"; */
-            /* let goleadoresout = document.getElementsByClassName('itemgoleador');
-            console.log(goleadoresout);
-            goleadoresout.style.cssText = "margin: 10px"; */
+            setFull(true);
+            if (PrecioTotal <= 100) {
+                ctx.goleadores(Goleadores)
+            }
+
         }
         else {
             setFull(false)
             //aca darle display devuelta
         };
-    }, [Goleadores, full])
+    }, [Goleadores, full, PrecioTotal, ctx])
 
     /* if (Goleadores.length === 5) {
         let goleadoresout = document.getElementsByClassName('itemgoleador');
@@ -256,6 +259,7 @@ const Goleadores = () => {
         setGoleadores([]);
         setPrecioTotal(0)
         setedit(!edit)
+        ctx.goleadores()
     }
 
     // estas variables eran para poner los equipos al costado del titulo

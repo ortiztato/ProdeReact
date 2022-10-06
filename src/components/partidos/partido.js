@@ -44,7 +44,6 @@ const Partido = (props) => {
 
     useEffect(() => {
 
-
         if (seleccionPartido.length > 0 && seleccionPartido.length < 3) {
             setOkpartido(true)
         }
