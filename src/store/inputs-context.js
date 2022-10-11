@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const InputsContext = React.createContext({
   /* inputsLeft: 0, */
@@ -18,18 +18,19 @@ const InputsContext = React.createContext({
 
 export const InputsContextProvider = (props) => {
   /* const [inputsLeft, setInputsLeft] = useState(0); */
-  const [inputGanador, setInputGanador] = useState('ganador');
-  const [inputDesilusion, setInputDesilusion] = useState('desilusion');
-  const [inputRevelacion, setInputRevelacion] = useState('revelacion');
-  const [inputLamentable, setInputLamentable] = useState('lamentable');
-  const [inputGoleadores, setInputGoleadores] = useState('goleadores');
-  const [inputPartidos, setInputPartidos] = useState('partidos');
-  const [inputOctavos, setInputOctavos] = useState('octavos');
-  const [inputCuartos, setInputCuartos] = useState('cuartos');
-  const [inputSemis, setInputSemis] = useState('semis');
-  const [inputFinal, setInputFinal] = useState('final');
-  const [inputNombre, setInputNombre] = useState('nombre');
-  const [inputLiga, setInputLiga] = useState('liga');
+  const [inputGanador, setInputGanador] = useState();
+  const [inputDesilusion, setInputDesilusion] = useState();
+  const [inputRevelacion, setInputRevelacion] = useState();
+  const [inputLamentable, setInputLamentable] = useState();
+  const [inputGoleadores, setInputGoleadores] = useState();
+  const [inputPartidos, setInputPartidos] = useState();
+  const [inputOctavos, setInputOctavos] = useState();
+  const [inputCuartos, setInputCuartos] = useState();
+  const [inputSemis, setInputSemis] = useState();
+  const [inputFinal, setInputFinal] = useState();
+  const [inputNombre, setInputNombre] = useState();
+  const [inputLiga, setInputLiga] = useState();
+  const [undefinedInputs, setUndefinedInputs] = useState();
 
 
   const globalInput = {
@@ -46,6 +47,23 @@ export const InputsContextProvider = (props) => {
     Semis: inputSemis,
     Final: inputFinal,
   }
+
+
+
+  useEffect(() => {
+
+    let objArr = Object.entries(globalInput);
+
+    const filteredUser = objArr.filter(function ([key, value]) {
+      return !value; // the condition for filter. Change this as you need.
+    });
+
+    console.log(undefinedInputs);
+
+    setUndefinedInputs(+filteredUser.length)
+
+
+  }, [globalInput])
 
 
   const ganadorHandler = (inputGanador) => {
@@ -123,6 +141,7 @@ export const InputsContextProvider = (props) => {
         nombre: nombreHandler,
         liga: ligaHandler,
         submitForm: submitFormHandler,
+        undefinedInputs: undefinedInputs,
 
       }}
     >

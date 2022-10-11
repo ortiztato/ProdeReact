@@ -356,6 +356,24 @@ body {
   cursor: pointer;
 }
 
+.bidsubmitbuttonerror {
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  border: 0px solid rgba(0, 0, 0, 0.3);
+  /* box-shadow: 1px 1px 10px rgba(0,0,0,0.5); */
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: 550;
+  text-decoration: none;
+  background: #9b9b96;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  display: block;
+  cursor: pointer;
+
+}
+
 .divsubmit {
   margin-top: 6rem;
 }
@@ -370,6 +388,31 @@ input:checked {
 
   background-color: #009578;
 }
+
+prueba {
+
+  background-color: #fff202;
+}
+
+
+.undefinedInputsicon {
+  position: fixed;
+  width: 5rem;
+  height: 5rem;
+  bottom: 2rem;
+  right: 2rem;
+  border-radius: 50%;
+  background-color: #00000024;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 1rem;
+  /* box-shadow: 2px 2px 3px #999; */
+  z-index: 200;
+
+
+}
+
+
 
 
 @media (min-width: 950px) {
@@ -392,6 +435,23 @@ input:checked {
 
   .tituloprode br {
     display: none;
+  }
+
+  .undefinedInputsicon {
+    position: fixed;
+    width: 5rem;
+    height: 5rem;
+    bottom: 6rem;
+    right: 6rem;
+    border-radius: 50%;
+    background-color: #0000003d;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 1rem;
+    /* box-shadow: 2px 2px 3px #999; */
+    z-index: 100;
+
+
   }
 
 }
