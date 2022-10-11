@@ -76,7 +76,7 @@ input:checked {
 
     .grid {
         display: grid;
-        grid-template-columns: repeat(2, 40%);
+        grid-template-columns: repeat(2, 30%);
         width: 100%;
         gap: 2rem;
         justify-content: center;

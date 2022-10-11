@@ -11,14 +11,20 @@ import Semis from './components/Semis/Semis';
 import Cuartos from './components/Cuartos/Cuartos';
 import Final from './components/Final/Final';
 
+import Modal from './UI/Modal';
+
+
+
 import InputsContext from './store/inputs-context';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 
 
 function App() {
 
   const ctx = useContext(InputsContext);
+
+  const [modal, setModal] = useState();
 
   const nombreHandler = (event) => {
     ctx.nombre(event.target.value);
@@ -28,12 +34,28 @@ function App() {
     ctx.liga(event.target.value);
   };
 
+  const submitForm = () => {
+    setModal({
+      content: 'el PRODE fue enviado correctamente',
+    });
+  };
+
+  const modalHandler = () => {
+    setModal(null);
+  };
+
   return (
     <div className="App">
+      {modal && (
+        <Modal
+          content={modal.content}
+          onConfirm={modalHandler}
+        />
+      )}
 
       <header className="App-header">
       </header>
-      <div className="tituloequipos">PRODE MUNDIAL 2022</div>
+      <div className="tituloprode">PRODE <br /> MUNDIAL <br /> 2022</div>
       <Ganador />
       <Desilusion />
       <Revelacion />
@@ -57,8 +79,9 @@ function App() {
           type="text"
           onChange={ligaHandler} />
 
-        <button className='bidsubmitbutton' onClick={ctx.submitForm}> ENVIAR </button>
+        <button className='bidsubmitbutton' onClick={submitForm}> ENVIAR </button>
       </div>
+
 
 
 

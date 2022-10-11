@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import classes from './Partidos.module.css'
 import Partido from './partido'
+import Card from '../../UI/Card';
 
 const Grupo = (props) => {
 
@@ -99,21 +100,25 @@ const Grupo = (props) => {
 
     return (
 
-        <div className={classes.grupo}>
-            <div className={classes.titulogrupo}>{props.name}
-                <div className={classes.emojigrupoo}>{'   '}
-                    {seleccionGrupo.length > 0 && seleccionGrupo.length < 7 && '🟡'}
-                    {seleccionGrupo.length === 6 && 'está el doble?​'}
-                    {seleccionGrupo.length === 7 && grupoOk && '🟢​'}
-                    {seleccionGrupo.length === 7 && !grupoOk && '🔴​ algun partido esta mal amigo'}
-                    {seleccionGrupo.length > 7 && '🔴​ excedido​'}</div></div>
-            <Partido equipo1={props.equipo1} equipo2={props.equipo2} id={id1} setPartidoHandler={setPartidoHandler1} />
-            <Partido equipo1={props.equipo3} equipo2={props.equipo4} id={id2} setPartidoHandler={setPartidoHandler2} />
-            <Partido equipo1={props.equipo1} equipo2={props.equipo3} id={id3} setPartidoHandler={setPartidoHandler3} />
-            <Partido equipo1={props.equipo2} equipo2={props.equipo4} id={id4} setPartidoHandler={setPartidoHandler4} />
-            <Partido equipo1={props.equipo1} equipo2={props.equipo4} id={id5} setPartidoHandler={setPartidoHandler5} />
-            <Partido equipo1={props.equipo2} equipo2={props.equipo3} id={id6} setPartidoHandler={setPartidoHandler6} />
-        </div>
+        <Card>
+
+            <div className={classes.grupo}>
+                <div className={classes.titulogrupo}>{props.name}
+                    <div className={classes.emojigrupoo}>{'   '}
+                        {seleccionGrupo.length > 0 && seleccionGrupo.length < 7 && '🟡'}
+                        {seleccionGrupo.length === 6 && 'está el doble?​'}
+                        {seleccionGrupo.length === 7 && grupoOk && '🟢​'}
+                        {seleccionGrupo.length === 7 && !grupoOk && '🔴​ algun partido esta mal amigo'}
+                        {seleccionGrupo.length > 7 && '🔴​ excedido​'}</div></div>
+                <Partido equipo1={props.equipo1} equipo2={props.equipo2} id={id1} setPartidoHandler={setPartidoHandler1} />
+                <Partido equipo1={props.equipo3} equipo2={props.equipo4} id={id2} setPartidoHandler={setPartidoHandler2} />
+                <Partido equipo1={props.equipo1} equipo2={props.equipo3} id={id3} setPartidoHandler={setPartidoHandler3} />
+                <Partido equipo1={props.equipo2} equipo2={props.equipo4} id={id4} setPartidoHandler={setPartidoHandler4} />
+                <Partido equipo1={props.equipo1} equipo2={props.equipo4} id={id5} setPartidoHandler={setPartidoHandler5} />
+                <Partido equipo1={props.equipo2} equipo2={props.equipo3} id={id6} setPartidoHandler={setPartidoHandler6} />
+            </div>
+
+        </Card>
 
     )
 

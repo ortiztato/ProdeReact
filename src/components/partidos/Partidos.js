@@ -5,6 +5,7 @@ import classes from './Partidos.module.css'
 import { useState, useEffect, useContext } from 'react';
 import InputsContext from "../../store/inputs-context";
 
+
 const Partidos = () => {
 
     const Grupos = [
