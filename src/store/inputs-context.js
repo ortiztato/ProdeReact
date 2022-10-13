@@ -115,11 +115,7 @@ export const InputsContextProvider = (props) => {
   };
 
 
-  // esta funcion que concatene todos los objetos y la postee
 
-  /* const submitFormHandler = () => {
-    console.log(globalInput)
-  } */
 
   async function submitFormHandler() {
     const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json', {

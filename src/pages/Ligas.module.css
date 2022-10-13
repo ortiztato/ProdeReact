@@ -1,0 +1,49 @@
+.ligaPage {
+    padding: 1rem;
+}
+
+.tituloLigas {
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.tituloLiga {
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.Ligaitem {
+    text-decoration: none;
+    color: black;
+}
+
+.usuarioItem {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.inputsItem {
+    display: block
+}
+
+.inputsItem div {
+    margin-top: 1rem;
+}
+
+
+
+
+@media (min-width: 950px) {
+    .usuarioItem {
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        width: 40%;
+
+    }
+}
