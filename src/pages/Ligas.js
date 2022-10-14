@@ -52,7 +52,7 @@ const Ligas = () => {
         <div>
           {Ligas.map((key) => (
 
-            <Link className={classes.Ligaitem} to={`/ligas/${key}`}>{key}</Link>
+            <div><Link className={classes.Ligaitem} to={`/ligas/${key}`}>{key}</Link></div>
 
           ))}
         </div>
