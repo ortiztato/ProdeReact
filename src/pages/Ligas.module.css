@@ -14,11 +14,13 @@
     font-weight: 700;
     margin-bottom: 40px;
     text-align: center;
+    text-transform: capitalize;
 }
 
 .Ligaitem {
     text-decoration: none;
     color: black;
+    text-transform: capitalize;
 }
 
 .usuarioItem {
