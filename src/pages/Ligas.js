@@ -33,7 +33,7 @@ const Ligas = () => {
     prodes = Object.entries(data)
 
     prodes.map((key) => (
-      LigasArr.push(key[1].Liga)
+      LigasArr.push(key[1].Liga.toLowerCase())
     ));
 
     LigasArrSinDuplicate = [...new Set(LigasArr)];
