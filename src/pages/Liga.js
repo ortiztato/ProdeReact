@@ -33,7 +33,7 @@ const Liga = () => {
         /* console.log(prodes) */
 
         prodes.map((key) => {
-            if (key[1].Liga.toLowerCase() === params.liganame) {
+            if (key[1].Liga === params.liganame) {
                 UsuariosArr.push(key[1].Nombre)
             }
 

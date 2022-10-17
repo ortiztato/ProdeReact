@@ -33,7 +33,7 @@ const Ligas = () => {
     prodes = Object.entries(data)
 
     prodes.map((key) => (
-      LigasArr.push(key[1].Liga.toLowerCase())
+      LigasArr.push(key[1].Liga.trim().toLowerCase())
     ));
 
     LigasArrSinDuplicate = [...new Set(LigasArr)];
@@ -52,7 +52,7 @@ const Ligas = () => {
         <div>
           {Ligas.map((key) => (
 
-            <div><Link className={classes.Ligaitem} to={`/ligas/${key}`}>{key}</Link></div>
+            <div className={classes.usuarioItem}><Link className={classes.Ligaitem} to={`/ligas/${key}`}>{key}</Link></div>
 
           ))}
         </div>

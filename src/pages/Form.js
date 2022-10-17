@@ -36,7 +36,8 @@ function Form() {
     };
 
     const ligaHandler = (event) => {
-        ctx.liga(event.target.value);
+        const ligaTrim = event.target.value.trim().toLowerCase()
+        ctx.liga(ligaTrim);
     };
 
     /* const submitForm = () => {
