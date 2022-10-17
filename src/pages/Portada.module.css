@@ -1,0 +1,46 @@
+.portadaPage {
+    /* padding: 1rem; */
+    background-color: black;
+    color: white;
+    height: 100vh;
+    padding-top: 15vh;
+}
+
+.tituloPortada {
+    font-size: 3.5rem;
+    text-align: center;
+    margin: 0;
+    padding: 1rem;
+}
+
+.linksContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10rem;
+
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+@media (min-width: 950px) {
+
+    .tituloPortada {
+        font-size: 8rem;
+    }
+
+    .linksContainer {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 150px;
+
+    }
+
+}
+
+
+
+@media (max-width: 370px) {}

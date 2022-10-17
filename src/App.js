@@ -6,6 +6,7 @@ import Ligas from './pages/Ligas';
 import Liga from './pages/Liga';
 import Form from './pages/Form';
 import Usuario from './pages/Usuario';
+import Portada from './pages/Portada';
 
 
 import React, { useContext, useState } from 'react';
@@ -21,6 +22,9 @@ function App() {
   return (
     <div>
       <Switch>
+        <Route path='/portada' exact >
+          <Portada />
+        </Route>
         <Route path='/ligas' exact >
           <Ligas />
         </Route>
@@ -28,7 +32,7 @@ function App() {
           <Form />
         </Route>
         <Route path='/' exact>
-          <Redirect to='/form' />
+          <Redirect to='/portada' />
         </Route>
         <Route path='/ligas/:liganame' exact>
           <Liga />
