@@ -49,7 +49,7 @@ const Ligas = () => {
       </div>
 
       <Route path='/ligas/' exact>
-        <div>
+        <div className={classes.ligasContainer}>
           {Ligas.map((key) => (
 
             <div className={classes.usuarioItem}><Link className={classes.Ligaitem} to={`/ligas/${key}`}>{key}</Link></div>

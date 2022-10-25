@@ -21,7 +21,8 @@ import Modal from '../UI/Modal';
 
 import InputsContext from '../store/inputs-context';
 import React, { useContext, useState } from 'react';
-import { Route, Switch, Redirect, Link } from 'react-router-dom';
+import { Route, Switch, Redirect, Link, useHistory  } from 'react-router-dom';
+/* import { useRouter } from 'next/router' */
 
 
 
@@ -30,6 +31,7 @@ function Form() {
     const ctx = useContext(InputsContext);
 
     const [modal, setModal] = useState();
+    const [liga, setLiga] = useState();
 
     const nombreHandler = (event) => {
         ctx.nombre(event.target.value);
@@ -37,6 +39,7 @@ function Form() {
 
     const ligaHandler = (event) => {
         const ligaTrim = event.target.value.trim().toLowerCase()
+setLiga(ligaTrim)
         ctx.liga(ligaTrim);
     };
 
@@ -54,6 +57,12 @@ function Form() {
   
     }; */
 
+    /* const router = useRouter() */
+
+    const history = useHistory();
+
+
+
     const submitOK = () => {
 
 
@@ -62,6 +71,7 @@ function Form() {
         });
         ctx.submitForm();
 
+
     };
 
 
@@ -69,13 +79,18 @@ function Form() {
         setModal({
             content: 'faltan campos por completar',
         });
+        /*  router.push('/home') */
+        
 
     };
 
     const modalHandler = () => {
+        /* history.push("/home"); */
         setModal(null);
-
-
+        if (ctx.undefinedInputs === 0 ){ 
+            history.push(`/ligas/${liga}`);
+        }
+        /* history.push("/home"); */
     };
 
 

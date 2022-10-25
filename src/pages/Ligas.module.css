@@ -17,16 +17,38 @@
     text-transform: capitalize;
 }
 
+.ligasContainer{
+    display: grid;
+    gap: 1px;
+    width: 100%;
+
+}
+
 .Ligaitem {
     text-decoration: none;
-    color: black;
     text-transform: capitalize;
+    cursor: pointer;
+    border-radius: 3px;
+    width: 100%;
+    padding-left: 10px;
+    /* background: #009577af;
+  color: #ffffff; */
+  background: #eeeeee;
+  color: black;
 }
+
+.puntajeJugador{
+    background: #eeeeee;
+  color: black;
+  padding-right: 2px;
+}
+
 
 .usuarioItem {
     display: flex;
     justify-content: space-between;
     margin: auto;
+    width: 100%;
 }
 
 .inputsItem {
@@ -42,10 +64,8 @@
 
 @media (min-width: 950px) {
     .usuarioItem {
-        display: flex;
-        justify-content: space-between;
-        margin: auto;
         width: 40%;
+        max-width: 500px;
 
     }
 }

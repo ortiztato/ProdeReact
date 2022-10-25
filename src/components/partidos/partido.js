@@ -65,10 +65,8 @@ const Partido = (props) => {
                 name="uno"
                 type="checkbox"
                 onChange={handleInputChange1}
-            //seria una funcion que cargue o borre este name al array / //{full ? 'true' : 'false'} 
-            // <div>{opcion1 ? 'true1' : 'false1'}{opcion2 ? 'true2' : 'false2'}{opcion3 ? 'true3' : 'false3'}</div>
             />
-
+            <label for='unocheck'></label>
             <input
                 name="dos"
                 type="checkbox"
