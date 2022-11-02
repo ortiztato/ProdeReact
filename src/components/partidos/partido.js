@@ -64,6 +64,8 @@ const Partido = (props) => {
             <input
                 name="uno"
                 type="checkbox"
+                /* disabled="disabled"  no te deja cambiar
+                checked="checked"  te lo selecciona     */
                 onChange={handleInputChange1}
             />
             <label for='unocheck'></label>
