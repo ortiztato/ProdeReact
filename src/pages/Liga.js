@@ -47,14 +47,21 @@ const Liga = () => {
     return (
         <div className={classes.ligaPage}>
             <div className={classes.tituloLiga}>{params.liganame}</div>
-            <div className={classes.ligasContainer}> {Usuarios.map((key) => (
+            <div className={classes.ligasContainer}>
+                <div className={classes.tituloContainer}>
 
-                <div className={classes.usuarioItem}>
-                    <Link className={classes.Ligaitem} to={`/ligas/${params.liganame}/${key}`}>{key} </Link>
-                    <div className={classes.puntajeJugador}> 0 </div>
+                    <div className={classes.tituloJugador}> Jugador </div>
+                    <div className={classes.tituloPuntaje}> Ptos </div>
                 </div>
+                {Usuarios.map((key) => (
 
-            ))}</div>
+                    <div className={classes.usuarioItem}>
+
+                        <Link className={classes.Ligaitem} to={`/ligas/${params.liganame}/${key}`}>{key} </Link>
+                        <div className={classes.puntajeJugador}> 0 </div>
+                    </div>
+
+                ))}</div>
         </div>
 
     );

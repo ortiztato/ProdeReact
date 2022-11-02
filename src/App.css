@@ -380,23 +380,23 @@
 
 .divsubmit {
   margin-top: 6rem;
+  margin-bottom: 3rem;
 }
 
 .divsubmit input {
   margin-bottom: 0.4rem;
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
+  width: 210px;
+  height: 25px;
 }
+
 
 input:checked {
 
   background-color: #009578;
 }
 
-prueba {
-
-  background-color: #fff202;
-}
 
 
 .undefinedInputsicon {
@@ -419,6 +419,14 @@ prueba {
 .iraligas {
   margin-top: 3rem;
   margin-bottom: 3rem;
+}
+
+.select {
+  margin-bottom: 0.4rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  width: 210px;
+  height: 25px;
 }
 
 

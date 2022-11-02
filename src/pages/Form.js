@@ -21,7 +21,7 @@ import Modal from '../UI/Modal';
 
 import InputsContext from '../store/inputs-context';
 import React, { useContext, useState } from 'react';
-import { Route, Switch, Redirect, Link, useHistory  } from 'react-router-dom';
+import { Route, Switch, Redirect, Link, useHistory } from 'react-router-dom';
 /* import { useRouter } from 'next/router' */
 
 
@@ -39,7 +39,7 @@ function Form() {
 
     const ligaHandler = (event) => {
         const ligaTrim = event.target.value.trim().toLowerCase()
-setLiga(ligaTrim)
+        setLiga(ligaTrim)
         ctx.liga(ligaTrim);
     };
 
@@ -80,14 +80,14 @@ setLiga(ligaTrim)
             content: 'faltan campos por completar',
         });
         /*  router.push('/home') */
-        
+
 
     };
 
     const modalHandler = () => {
         /* history.push("/home"); */
         setModal(null);
-        if (ctx.undefinedInputs === 0 ){ 
+        if (ctx.undefinedInputs === 0) {
             history.push(`/ligas/${liga}`);
         }
         /* history.push("/home"); */
@@ -125,10 +125,16 @@ setLiga(ligaTrim)
                     onChange={nombreHandler} />
                 <br />
                 <label>Liga:</label><br />
-                <input
+                {/* <input
                     name="usuario"
                     type="text"
-                    onChange={ligaHandler} />
+                    onChange={ligaHandler} /> */}
+                <select className='select' onChange={ligaHandler}>
+                    <option></option>
+                    <option>LigaPrueba</option>
+                    <option>Superleague</option>
+                    <option>Halcon</option>
+                </select>
 
                 {ctx.undefinedInputs === 0 ? <button className='bidsubmitbutton' onClick={submitOK}> ENVIAR </button> : <button className='bidsubmitbuttonerror' onClick={submitError}> ENVIAR </button>}
 
@@ -140,9 +146,9 @@ setLiga(ligaTrim)
                 }
 
             </div>
-            <div className='iraligas' >
+            {/* <div className='iraligas' >
                 ir a  <Link to={`/ligas/`}>LIGAS</Link>
-            </div>
+            </div> */}
 
         </div >
 

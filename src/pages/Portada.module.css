@@ -3,20 +3,25 @@
     background-color: black;
     color: white;
     height: 100vh;
-    padding-top: 15vh;
+    padding-top: 5vh;
+    display: grid;
+    grid-template-rows: 40% 30% 20%;
+
 }
 
 .tituloPortada {
     font-size: 3.5rem;
+
     text-align: center;
-    margin: 0;
-    padding: 1rem;
+    margin: auto;
+    padding: 0rem 1rem 0;
 }
 
 .linksContainer {
     display: flex;
     justify-content: space-around;
-    margin-top: 10rem;
+    align-items: center;
+    margin-top: 0rem;
 
 }
 
@@ -34,15 +39,53 @@
     padding: 10px;
     width: 30vw;
     transition: 100ms;
-    
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .link:hover {
     background-color: rgba(255, 255, 255, 0.138);
     font-size: 14px;
-  }
+}
+
+@keyframes changewidth {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 1.07;
+    }
+}
+
+.imgCopa1 {
+    height: 200px;
+    margin: auto;
+    animation-duration: 1s;
+    animation-name: changewidth;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.imgCopa2 {
+    height: 200px;
+    display: none;
+    animation-duration: 1s;
+    animation-name: changewidth;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
 
 @media (min-width: 950px) {
+
+    .portadaPage {
+
+        grid-template-rows: 50% 30% 20%;
+
+    }
 
     .tituloPortada {
         font-size: 8rem;
@@ -50,8 +93,8 @@
 
     .linksContainer {
         display: flex;
-        justify-content: space-evenly;
-        margin-top: 150px;
+        justify-content: center;
+        gap: 120px;
 
     }
 
@@ -59,6 +102,20 @@
         font-size: 16px;
         padding: 15px;
         width: 10vw;
+    }
+
+    .imgCopa1 {
+        height: 200px;
+        margin: auto;
+        display: none;
+    }
+
+
+
+    .imgCopa2 {
+        height: 250px;
+        display: block;
+
     }
 
 }

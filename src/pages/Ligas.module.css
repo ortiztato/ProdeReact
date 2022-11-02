@@ -17,7 +17,7 @@
     text-transform: capitalize;
 }
 
-.ligasContainer{
+.ligasContainer {
     display: grid;
     gap: 1px;
     width: 100%;
@@ -33,14 +33,14 @@
     padding-left: 10px;
     /* background: #009577af;
   color: #ffffff; */
-  background: #eeeeee;
-  color: black;
+    background: #eeeeee;
+    color: black;
 }
 
-.puntajeJugador{
+.puntajeJugador {
     background: #eeeeee;
-  color: black;
-  padding-right: 2px;
+    color: black;
+    padding-right: 2px;
 }
 
 
@@ -59,6 +59,26 @@
     margin-top: 1rem;
 }
 
+.tituloContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.tituloJugador {
+    background-color: none;
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.tituloPuntaje {
+    font-size: 18px;
+
+
+}
+
 
 
 
@@ -66,6 +86,17 @@
     .usuarioItem {
         width: 40%;
         max-width: 500px;
+    }
 
+    .tituloContainer {
+        width: 40%;
+    }
+
+    .tituloPuntaje {
+        margin-right: 10px;
+    }
+
+    .tituloJugador {
+        margin-left: 12px;
     }
 }
