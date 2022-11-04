@@ -56,7 +56,7 @@
 }
 
 .inputsItem div {
-    margin-top: 1rem;
+    /* margin-top: 1rem; crashea los cards de los partidos */
 }
 
 .tituloContainer {

@@ -1,7 +1,10 @@
 import classes from './Ligas.module.css'
+
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Route, Link, Switch, Redirect } from 'react-router-dom';
+
+import Partidos from '../components/partidos/Partidos';
 
 const Usuario = () => {
 
@@ -72,6 +75,7 @@ const Usuario = () => {
                 <div> Revelacion: {inputRevelacion} </div>
                 <div> Lamentable: {inputLamentable} </div>
                 <div> Goleadores: {inputGoleadores.map((key) => <span>{key}, </span>)} </div>
+                <Partidos />
                 <div> Partidos: {inputPartidos.map((key) => <span>{key} </span>)} </div>
                 <div> Octavos: {inputOctavos.map((key) => <span>{key} </span>)} </div>
                 <div> Cuartos: {inputCuartos.map((key) => <span>{key} </span>)} </div>
