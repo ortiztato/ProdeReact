@@ -90,6 +90,7 @@
 
     .tituloContainer {
         width: 40%;
+        max-width: 500px;
     }
 
     .tituloPuntaje {
