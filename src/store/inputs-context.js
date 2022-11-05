@@ -58,8 +58,6 @@ export const InputsContextProvider = (props) => {
       return !value; // the condition for filter. Change this as you need.
     });
 
-    console.log(undefinedInputs);
-
     setUndefinedInputs(+filteredUser.length)
 
 
@@ -126,7 +124,7 @@ export const InputsContextProvider = (props) => {
       }
     });
     const data = await response.json();
-    console.log(data);
+    /* console.log(data); */
   }
 
 

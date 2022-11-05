@@ -7,7 +7,7 @@ const Partido = (props) => {
     const params = useParams();
 
 
-    const [seleccionPartido, setSeleccionPartido] = useState(['cajasa']);
+    const [seleccionPartido, setSeleccionPartido] = useState([]);
     const [opcion1, setOpcion1] = useState(false);
     const [opcion2, setOpcion2] = useState(false);
     const [opcion3, setOpcion3] = useState(false);
@@ -49,11 +49,11 @@ const Partido = (props) => {
 
     useEffect(() => {
 
-        console.log(params.usuario)
+        /* console.log(params.usuario) */
         if (params.usuario) {
             setModoUser(true)
         }
-        console.log(modoUser)
+        /* console.log(modoUser) */
 
         if (seleccionPartido.length > 0 && seleccionPartido.length < 3) {
             setOkpartido(true)
@@ -70,34 +70,64 @@ const Partido = (props) => {
 
     return (
 
-        <div className={classes.divpartido}>
-            <div className={classes.nombreequipo}>{props.equipo1}</div>
-            <input
-                name="uno"
-                type="checkbox"
-                /*  disabled="disabled" */
-                disabled={modoUser ? "disabled" : ""}
-                /* checked={modoUser ? "checked" : ""} */
-                /* disabled="disabled"  no te deja cambiar
-                checked="checked"  te lo selecciona     */
-                onChange={handleInputChange1}
-            />
-            <label for='unocheck'></label>
-            <input
-                name="dos"
-                type="checkbox"
-                disabled={modoUser ? "disabled" : ""}
-                checked={modoUser ? "checked" : ""}
-                onChange={handleInputChange2} />
-            <input
-                name="tres"
-                type="checkbox"
-                disabled={modoUser ? "disabled" : ""}
-                onChange={handleInputChange3} />
-            <div className={classes.nombreequipo}>{props.equipo2}</div>
-            <div>{okpartido ? '✔️​' : '❌'}</div>
+        <div>
+            {modoUser ?
+                <div className={classes.divpartido}>
+                    <div className={classes.nombreequipo}>{props.equipo1}</div>
+                    <input
+                        name="uno"
+                        type="checkbox"
+                        disabled="disabled"
+                    /* checked={modoUser ? "checked" : ""} */
+                    /* disabled="disabled"  no te deja cambiar
+                    checked="checked"  te lo selecciona     */
+
+                    />
+                    <label for='unocheck'></label>
+                    <input
+                        name="dos"
+                        type="checkbox"
+                        disabled="disabled"
+                        /* disabled={modoUser ? "disabled" : ""} */
+                        checked={modoUser ? "checked" : ""}
+
+                    />
+                    <input
+                        name="tres"
+                        type="checkbox"
+                        disabled="disabled"
+                    />
+                    <div className={classes.nombreequipo}>{props.equipo2}</div>
+
+
+                </div>
+                :
+                <div className={classes.divpartido}>
+                    <div className={classes.nombreequipo}>{props.equipo1}</div>
+                    <input
+                        name="uno"
+                        type="checkbox"
+                        onChange={handleInputChange1}
+                    />
+                    <label for='unocheck'></label>
+                    <input
+                        name="dos"
+                        type="checkbox"
+                        onChange={handleInputChange2} />
+                    <input
+                        name="tres"
+                        type="checkbox"
+                        onChange={handleInputChange3} />
+                    <div className={classes.nombreequipo}>{props.equipo2}</div>
+                    <div>{okpartido ? '✔️​' : '❌'}</div>
+
+                </div>}
+
+
 
         </div>
+
+
 
     )
 }

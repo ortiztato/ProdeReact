@@ -28,6 +28,7 @@ const Grupo = (props) => {
     const [partido6ok, setPartido6ok] = useState(false);
     const [grupoOk, setGrupoOk] = useState(false);
     const [seleccionGrupo, setSeleccionGrupo] = useState([]);
+    const [grupoLength, setGrupoLength] = useState([]);
 
     const setPartidoHandler1 = (partido, partidoOk) => {
         setPartido1(partido);
@@ -55,19 +56,40 @@ const Grupo = (props) => {
     }
 
 
-    /* const addPartidos = (partido1, partido2, partido3, partido4, partido5, partido6) => {
-        let arr = [];
-        arr.push(partido1);
-        arr.push(partido2);
-        arr.push(partido3);
-        arr.push(partido4);
-        arr.push(partido5);
-        arr.push(partido6);
-        arr.filter(n => n)
-        setSeleccionGrupo(arr)
-    } */
 
+
+
+    // VERSION INPUT EN UN ARRAY CONTENIENDO ARRAYS
     const addPartidos = (partido1, partido2, partido3, partido4, partido5, partido6) => {
+        let arr = [];
+        arr.push(partido1)
+        arr.push(partido2)
+        arr.push(partido3)
+        arr.push(partido4)
+        arr.push(partido5)
+        arr.push(partido6)
+        arr.filter(n => n) //probar de comentarla que cambia
+        setSeleccionGrupo(arr)
+
+    }
+
+    const countPartidos = (partido1, partido2, partido3, partido4, partido5, partido6) => {
+        let arr = [];
+        partido1.map((item) => arr.push(item))
+        partido2.map((item) => arr.push(item))
+        partido3.map((item) => arr.push(item))
+        partido4.map((item) => arr.push(item))
+        partido5.map((item) => arr.push(item))
+        partido6.map((item) => arr.push(item))
+        arr.filter(n => n)
+        let arrlength = arr.length
+        setGrupoLength(arrlength)
+
+    }
+
+
+    // VERSION ORIGINAL DEL INPUT DE UN ARRAY CON TODOS LOS DATOS 
+    /* const addPartidos = (partido1, partido2, partido3, partido4, partido5, partido6) => {
         let arr = [];
         partido1.map((item) => arr.push(item))
         partido2.map((item) => arr.push(item))
@@ -77,22 +99,32 @@ const Grupo = (props) => {
         partido6.map((item) => arr.push(item))
         arr.filter(n => n)
         setSeleccionGrupo(arr)
-    }
+    } */
 
     useEffect(() => {
         addPartidos(partido1, partido2, partido3, partido4, partido5, partido6);
+        countPartidos(partido1, partido2, partido3, partido4, partido5, partido6);
 
     }, [partido1, partido2, partido3, partido4, partido5, partido6])
 
+
+    useEffect(() => {
+
+        if (partido1ok && partido2ok && partido3ok && partido4ok && partido5ok && partido6ok && grupoLength === 7) {
+            setGrupoOk(true);
+        } else { setGrupoOk(false); }
+    }, [partido1ok, partido2ok, partido3ok, partido4ok, partido5ok, partido6ok, seleccionGrupo])
+
+    /* VERSION setGrupoOK original ( la variable tiene que tener 7 campos)
     useEffect(() => {
 
         if (partido1ok && partido2ok && partido3ok && partido4ok && partido5ok && partido6ok && seleccionGrupo.length === 7) {
             setGrupoOk(true);
         } else { setGrupoOk(false); }
-    }, [partido1ok, partido2ok, partido3ok, partido4ok, partido5ok, partido6ok, seleccionGrupo])
+    }, [partido1ok, partido2ok, partido3ok, partido4ok, partido5ok, partido6ok, seleccionGrupo]) */
 
     useEffect(() => {
-        props.setGrupoHandler(seleccionGrupo, +props.id)
+        props.setGrupoHandler(seleccionGrupo, grupoOk, +props.id)
     }, [grupoOk])
 
 
@@ -105,11 +137,11 @@ const Grupo = (props) => {
             <div className={classes.grupo}>
                 <div className={classes.titulogrupo}>{props.name}
                     <div className={classes.emojigrupoo}>{'   '}
-                        {seleccionGrupo.length > 0 && seleccionGrupo.length < 7 && '🟡'}
-                        {seleccionGrupo.length === 6 && 'está el doble?​'}
-                        {seleccionGrupo.length === 7 && grupoOk && '🟢​'}
-                        {seleccionGrupo.length === 7 && !grupoOk && '🔴​ algun partido esta mal amigo'}
-                        {seleccionGrupo.length > 7 && '🔴​ excedido​'}</div></div>
+                        {grupoLength > 0 && grupoLength < 7 && '🟡'}
+                        {grupoLength === 6 && 'está el doble?​'}
+                        {grupoLength === 7 && grupoOk && '🟢​'}
+                        {grupoLength === 7 && !grupoOk && '🔴​ algun partido esta mal amigo'}
+                        {grupoLength > 7 && '🔴​ excedido​'}</div></div>
                 <Partido equipo1={props.equipo1} equipo2={props.equipo2} id={id1} setPartidoHandler={setPartidoHandler1} />
                 <Partido equipo1={props.equipo3} equipo2={props.equipo4} id={id2} setPartidoHandler={setPartidoHandler2} />
                 <Partido equipo1={props.equipo1} equipo2={props.equipo3} id={id3} setPartidoHandler={setPartidoHandler3} />

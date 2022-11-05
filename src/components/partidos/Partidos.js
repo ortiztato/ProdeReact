@@ -1,8 +1,8 @@
 /* import React, { useState } from 'react'; */
 import Grupo from './Grupo';
-import classes from './Partidos.module.css'
+import classes from './Partidos.module.css';
 
-import { useState, useEffect, useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import InputsContext from "../../store/inputs-context";
 
 
@@ -87,17 +87,27 @@ const Partidos = () => {
     const [grupo6, setGrupo6] = useState([]);
     const [grupo7, setGrupo7] = useState([]);
     const [grupo8, setGrupo8] = useState([]);
+    const [grupo1ok, setGrupo1OK] = useState(false);
+    const [grupo2ok, setGrupo2OK] = useState(false);
+    const [grupo3ok, setGrupo3OK] = useState(false);
+    const [grupo4ok, setGrupo4OK] = useState(false);
+    const [grupo5ok, setGrupo5OK] = useState(false);
+    const [grupo6ok, setGrupo6OK] = useState(false);
+    const [grupo7ok, setGrupo7OK] = useState(false);
+    const [grupo8ok, setGrupo8OK] = useState(false);
     const [seleccionGrupo, setSeleccionGrupo] = useState([]);
+    const [partidosOK, setPartidosOk] = useState(false);
 
-    const setGrupoHandler1 = (inputGrupo, id) => {
-        if (id === 1) { setGrupo1(inputGrupo) };
-        if (id === 2) { setGrupo2(inputGrupo) };
-        if (id === 3) { setGrupo3(inputGrupo) };
-        if (id === 4) { setGrupo4(inputGrupo) };
-        if (id === 5) { setGrupo5(inputGrupo) };
-        if (id === 6) { setGrupo6(inputGrupo) };
-        if (id === 7) { setGrupo7(inputGrupo) };
-        if (id === 8) { setGrupo8(inputGrupo) };
+
+    const setGrupoHandler1 = (inputGrupo, grupoOK, id) => {
+        if (id === 1) { setGrupo1(inputGrupo); setGrupo1OK(grupoOK) };
+        if (id === 2) { setGrupo2(inputGrupo); setGrupo2OK(grupoOK) };
+        if (id === 3) { setGrupo3(inputGrupo); setGrupo3OK(grupoOK) };
+        if (id === 4) { setGrupo4(inputGrupo); setGrupo4OK(grupoOK) };
+        if (id === 5) { setGrupo5(inputGrupo); setGrupo5OK(grupoOK) };
+        if (id === 6) { setGrupo6(inputGrupo); setGrupo6OK(grupoOK) };
+        if (id === 7) { setGrupo7(inputGrupo); setGrupo7OK(grupoOK) };
+        if (id === 8) { setGrupo8(inputGrupo); setGrupo8OK(grupoOK) };
     }
 
     const addGrupos = (grupo1, grupo2, grupo3, grupo4, grupo5, grupo6, grupo7, grupo8) => {
@@ -112,6 +122,7 @@ const Partidos = () => {
         grupo8.map((item) => arr.push(item))
         arr.filter(n => n)
         setSeleccionGrupo(arr)
+        console.log(arr)
 
     }
 
@@ -120,12 +131,29 @@ const Partidos = () => {
 
     }, [grupo1, grupo2, grupo3, grupo4, grupo5, grupo6, grupo7, grupo8])
 
+
     useEffect(() => {
+
+        if (grupo1ok && grupo2ok && grupo3ok && grupo4ok && grupo5ok && grupo6ok && grupo7ok && grupo8ok) {
+            setPartidosOk(true);
+        } else { setPartidosOk(false); }
+    }, [grupo1ok, grupo2ok, grupo3ok, grupo4ok, grupo5ok, grupo6ok, grupo7ok, grupo8ok])
+
+
+    useEffect(() => {
+        if (partidosOK) {
+            ctx.partidos(seleccionGrupo)
+        }
+        else { ctx.partidos() }
+    }, [partidosOK])
+
+    /* validacion original del total
+     useEffect(() => {
         if (seleccionGrupo.length === 56) {
             ctx.partidos(seleccionGrupo)
         }
         else { ctx.partidos() }
-    }, [seleccionGrupo])
+    }, [seleccionGrupo]) */
 
 
 
