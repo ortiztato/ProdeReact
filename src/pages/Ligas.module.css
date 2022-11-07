@@ -100,4 +100,12 @@
     .tituloJugador {
         margin-left: 12px;
     }
+
+    .inputsItem {
+        display: flex;
+        flex-direction: column;
+        /* justify-self: center; */
+        max-width: 900px;
+        margin: auto;
+    }
 }
