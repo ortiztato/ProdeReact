@@ -4,6 +4,7 @@ import classes from './Partidos.module.css';
 
 import { useContext, useEffect, useState } from 'react';
 import InputsContext from "../../store/inputs-context";
+import { useParams } from 'react-router-dom';
 
 
 const Partidos = () => {
@@ -78,6 +79,9 @@ const Partidos = () => {
     ]
 
     const ctx = useContext(InputsContext);
+    const params = useParams();
+
+    const [prodes, setProdes] = useState([]);
 
     const [grupo1, setGrupo1] = useState([]);
     const [grupo2, setGrupo2] = useState([]);
@@ -122,9 +126,14 @@ const Partidos = () => {
         grupo8.map((item) => arr.push(item))
         arr.filter(n => n)
         setSeleccionGrupo(arr)
-        console.log(arr)
+
 
     }
+
+
+
+
+
 
     useEffect(() => {
         addGrupos(grupo1, grupo2, grupo3, grupo4, grupo5, grupo6, grupo7, grupo8);
@@ -146,6 +155,39 @@ const Partidos = () => {
         }
         else { ctx.partidos() }
     }, [partidosOK])
+
+
+    async function fetchProdes() {
+
+        if (params.usuario) {
+
+            console.log('buscando prodes');
+
+            const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Could not fetch quotes.');
+            }
+            let prodes1 = []
+
+            prodes1 = Object.entries(data)
+            setProdes(prodes1)
+
+            console.log(prodes)
+
+        }
+
+
+    }
+
+    useEffect(() => {
+
+        fetchProdes()
+
+    }, [])
+
+
 
     /* validacion original del total
      useEffect(() => {
@@ -180,6 +222,7 @@ const Partidos = () => {
                             equipo3={key.equipo3}
                             equipo4={key.equipo4}
                             setGrupoHandler={setGrupoHandler1}
+                            prodes={prodes}
 
 
                         />

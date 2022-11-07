@@ -41,7 +41,7 @@ const Usuario = () => {
         }
 
         prodes = Object.entries(data)
-        console.log(prodes)
+        /* console.log(prodes) */
 
         prodes.map((key) => {
 

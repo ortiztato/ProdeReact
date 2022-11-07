@@ -13,6 +13,13 @@ const Grupo = (props) => {
     const id5 = (+props.id - 1) * 18 + 13
     const id6 = (+props.id - 1) * 18 + 16
 
+    const id11 = (+props.id - 1) * 6 + 1
+    const id22 = (+props.id - 1) * 6 + 2
+    const id33 = (+props.id - 1) * 6 + 3
+    const id44 = (+props.id - 1) * 6 + 4
+    const id55 = (+props.id - 1) * 6 + 5
+    const id66 = (+props.id - 1) * 6 + 6
+
     /* const [okGrupo, setOkgrupo] = useState(false); */
     const [partido1, setPartido1] = useState([]);
     const [partido2, setPartido2] = useState([]);
@@ -127,6 +134,11 @@ const Grupo = (props) => {
         props.setGrupoHandler(seleccionGrupo, grupoOk, +props.id)
     }, [grupoOk])
 
+    useEffect(() => {
+        const prodes = props.prodes
+        console.log(prodes)
+    }, [props])
+
 
 
 
@@ -142,12 +154,12 @@ const Grupo = (props) => {
                         {grupoLength === 7 && grupoOk && '🟢​'}
                         {grupoLength === 7 && !grupoOk && '🔴​ algun partido esta mal amigo'}
                         {grupoLength > 7 && '🔴​ excedido​'}</div></div>
-                <Partido equipo1={props.equipo1} equipo2={props.equipo2} id={id1} setPartidoHandler={setPartidoHandler1} />
-                <Partido equipo1={props.equipo3} equipo2={props.equipo4} id={id2} setPartidoHandler={setPartidoHandler2} />
-                <Partido equipo1={props.equipo1} equipo2={props.equipo3} id={id3} setPartidoHandler={setPartidoHandler3} />
-                <Partido equipo1={props.equipo2} equipo2={props.equipo4} id={id4} setPartidoHandler={setPartidoHandler4} />
-                <Partido equipo1={props.equipo1} equipo2={props.equipo4} id={id5} setPartidoHandler={setPartidoHandler5} />
-                <Partido equipo1={props.equipo2} equipo2={props.equipo3} id={id6} setPartidoHandler={setPartidoHandler6} />
+                <Partido equipo1={props.equipo1} equipo2={props.equipo2} id={id1} id2={id11} setPartidoHandler={setPartidoHandler1} prodes={props.prodes} />
+                <Partido equipo1={props.equipo3} equipo2={props.equipo4} id={id2} id2={id22} setPartidoHandler={setPartidoHandler2} prodes={props.prodes} />
+                <Partido equipo1={props.equipo1} equipo2={props.equipo3} id={id3} id2={id33} setPartidoHandler={setPartidoHandler3} prodes={props.prodes} />
+                <Partido equipo1={props.equipo2} equipo2={props.equipo4} id={id4} id2={id44} setPartidoHandler={setPartidoHandler4} prodes={props.prodes} />
+                <Partido equipo1={props.equipo1} equipo2={props.equipo4} id={id5} id2={id55} setPartidoHandler={setPartidoHandler5} prodes={props.prodes} />
+                <Partido equipo1={props.equipo2} equipo2={props.equipo3} id={id6} id2={id66} setPartidoHandler={setPartidoHandler6} prodes={props.prodes} />
             </div>
 
         </Card>

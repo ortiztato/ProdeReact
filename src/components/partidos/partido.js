@@ -7,12 +7,49 @@ const Partido = (props) => {
     const params = useParams();
 
 
+    /* let prodes = []; */
+    let fetchPartido = [];
+
+    /* useEffect(() => {
+        fetchProdes()
+    }, []) */
+
+    function fetchPartidosEnProdes() {
+
+        /*  console.log(props.prodes) */
+
+
+        props.prodes.map((key) => {
+
+
+            if (key[1].Nombre === params.usuario) {
+                let modId = props.id2 - 1
+                fetchPartido = (key[1].Partidos[modId])
+                let arr = [];
+                fetchPartido.map((item) => arr.push(item - (modId) * 3))
+                if (arr.includes(1)) { setResultado1(true) }
+                if (arr.includes(2)) { setResultado2(true) }
+                if (arr.includes(3)) { setResultado3(true) }
+
+            }
+        });
+
+    }
+
+
+
+
+
     const [seleccionPartido, setSeleccionPartido] = useState([]);
     const [opcion1, setOpcion1] = useState(false);
     const [opcion2, setOpcion2] = useState(false);
     const [opcion3, setOpcion3] = useState(false);
     const [okpartido, setOkpartido] = useState(false);
     const [modoUser, setModoUser] = useState(false);
+    const [resultado1, setResultado1] = useState(false);
+    const [resultado2, setResultado2] = useState(false);
+    const [resultado3, setResultado3] = useState(false);
+    /* const [fetchData, setFetchData] = useState(); */
 
     const handleInputChange1 = (event) => {
         setOpcion1(!opcion1)
@@ -24,7 +61,7 @@ const Partido = (props) => {
         setOpcion3(!opcion3)
     }
 
-    const partido1 = +props.id
+    const partido1 = +props.id //el id del primer partido es el 1
     const partido2 = +props.id + 1
     const partido3 = +props.id + 2
 
@@ -52,6 +89,8 @@ const Partido = (props) => {
         /* console.log(params.usuario) */
         if (params.usuario) {
             setModoUser(true)
+
+            fetchPartidosEnProdes()
         }
         /* console.log(modoUser) */
 
@@ -68,6 +107,9 @@ const Partido = (props) => {
 
 
 
+
+
+
     return (
 
         <div>
@@ -78,7 +120,7 @@ const Partido = (props) => {
                         name="uno"
                         type="checkbox"
                         disabled="disabled"
-                    /* checked={modoUser ? "checked" : ""} */
+                        checked={resultado1}
                     /* disabled="disabled"  no te deja cambiar
                     checked="checked"  te lo selecciona     */
 
@@ -88,14 +130,14 @@ const Partido = (props) => {
                         name="dos"
                         type="checkbox"
                         disabled="disabled"
-                        /* disabled={modoUser ? "disabled" : ""} */
-                        checked={modoUser ? "checked" : ""}
+                        checked={resultado2}
 
                     />
                     <input
                         name="tres"
                         type="checkbox"
                         disabled="disabled"
+                        checked={resultado3}
                     />
                     <div className={classes.nombreequipo}>{props.equipo2}</div>
 
