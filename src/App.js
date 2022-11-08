@@ -7,6 +7,7 @@ import Liga from './pages/Liga';
 import Form from './pages/Form';
 import Usuario from './pages/Usuario';
 import Portada from './pages/Portada';
+import Resultados from './pages/Resultados';
 
 
 import React, { useContext, useState } from 'react';
@@ -39,6 +40,9 @@ function App() {
         </Route>
         <Route path='/ligas/:liganame/:usuario' exact>
           <Usuario />
+        </Route>
+        <Route path='/resultados' exact>
+          <Resultados />
         </Route>
       </Switch>
     </div>

@@ -75,7 +75,7 @@ const Usuario = () => {
                 <div> Revelacion: {inputRevelacion} </div>
                 <div> Lamentable: {inputLamentable} </div>
                 <div> Goleadores: {inputGoleadores.map((key) => <span>{key}, </span>)} </div>
-                <Partidos />
+                {/* <Partidos /> */}
                 {/* <div> Partidos: {inputPartidos.map((key) => <span>{key} </span>)} </div> */}
                 <div> Octavos: {inputOctavos.map((key) => <span>{key} </span>)} </div>
                 <div> Cuartos: {inputCuartos.map((key) => <span>{key} </span>)} </div>
