@@ -136,7 +136,7 @@ function Form() {
                     <option>Halcon</option>
                 </select>
 
-                {ctx.undefinedInputs === 0 ? <button className='bidsubmitbutton' onClick={submitOK}> ENVIAR </button> : <button className='bidsubmitbuttonerror' onClick={submitError}> ENVIAR </button>}
+                {ctx.undefinedInputs === 1 /* cambiar esto despues */ ? <button className='bidsubmitbutton' onClick={submitOK}> ENVIAR </button> : <button className='bidsubmitbuttonerror' onClick={submitError}> ENVIAR </button>}
 
             </div>
             <div className='undefinedInputsicon'>

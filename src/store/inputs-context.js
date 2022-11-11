@@ -116,15 +116,16 @@ export const InputsContextProvider = (props) => {
 
 
   async function submitFormHandler() {
-    const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json', {
+    // const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json', {
+    const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode', {
       method: 'POST',
       body: JSON.stringify(globalInput),
-      headers: {
+      /* headers: {
         'Content-Type': 'application/json'
-      }
+      } */
     });
     const data = await response.json();
-    /* console.log(data); */
+    console.log(data);
   }
 
 
