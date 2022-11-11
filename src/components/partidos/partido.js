@@ -8,7 +8,7 @@ const Partido = (props) => {
 
 
     /* let prodes = []; */
-    let fetchPartido = [];
+
 
     /* useEffect(() => {
         fetchProdes()
@@ -16,15 +16,34 @@ const Partido = (props) => {
 
     function fetchPartidosEnProdes() {
 
-        /*  console.log(props.prodes) */
+        /* console.log(props.prodes) */
 
+
+        /* props.prodes.map((key) => {
+
+
+            if (key.Nombre === params.usuario) {
+                let modId = props.id2 - 1
+                fetchPartido = (key.Partidos[modId])
+                let arr = [];
+                fetchPartido.map((item) => arr.push(item - (modId) * 3))
+                if (arr.includes(1)) { setResultado1(true) }
+                if (arr.includes(2)) { setResultado2(true) }
+                if (arr.includes(3)) { setResultado3(true) }
+
+            }
+        }); */
 
         props.prodes.map((key) => {
 
 
-            if (key[1].Nombre === params.usuario) {
+            if (key.Nombre === params.usuario) {
+                // console.log('match' + key.Nombre)
                 let modId = props.id2 - 1
-                fetchPartido = (key[1].Partidos[modId])
+                // console.log(modId)
+                let fetchPartido = []
+                fetchPartido = (key.Partidos[modId])
+                // console.log(fetchPartido)
                 let arr = [];
                 fetchPartido.map((item) => arr.push(item - (modId) * 3))
                 if (arr.includes(1)) { setResultado1(true) }

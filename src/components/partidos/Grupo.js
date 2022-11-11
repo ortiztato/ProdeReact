@@ -136,7 +136,7 @@ const Grupo = (props) => {
 
     useEffect(() => {
         const prodes = props.prodes
-        console.log(prodes)
+
     }, [props])
 
 

@@ -33,31 +33,56 @@ const Usuario = () => {
 
         console.log('buscando prodes');
 
-        const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
+        // const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
+        const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode');
         const data = await response.json();
 
         if (!response.ok) {
             throw new Error(data.message || 'Could not fetch quotes.');
         }
 
-        prodes = Object.entries(data)
-        /* console.log(prodes) */
+        // prodes = Object.entries(data)
+        prodes = data.body
+        console.log(prodes)
+        console.log(params.usuario)
+
+        /*  prodes.map((key) => {
+ 
+ 
+             if (key[1].Nombre === params.usuario) {
+ 
+                 setInputGanador(key[1].Ganador)
+                 setInputDesilusion(key[1].Desilusion)
+                 setInputRevelacion(key[1].Revelacion)
+                 setInputLamentable(key[1].Lamentable)
+                 setInputGoleadores(key[1].Goleadores)
+                 setInputPartidos(key[1].Partidos)
+                 setInputOctavos(key[1].Octavos)
+                 setInputCuartos(key[1].Cuartos)
+                 setInputSemis(key[1].Semis)
+                 setInputFinal(key[1].Final)
+             }
+ 
+         }); */
 
         prodes.map((key) => {
 
 
-            if (key[1].Nombre === params.usuario) {
+            if (key.Nombre === params.usuario) {
 
-                setInputGanador(key[1].Ganador)
-                setInputDesilusion(key[1].Desilusion)
-                setInputRevelacion(key[1].Revelacion)
-                setInputLamentable(key[1].Lamentable)
-                setInputGoleadores(key[1].Goleadores)
-                setInputPartidos(key[1].Partidos)
-                setInputOctavos(key[1].Octavos)
-                setInputCuartos(key[1].Cuartos)
-                setInputSemis(key[1].Semis)
-                setInputFinal(key[1].Final)
+                console.log('hay coincidencia')
+                console.log(key.Partidos)
+
+                setInputGanador(key.Ganador)
+                setInputDesilusion(key.Desilusion)
+                setInputRevelacion(key.Revelacion)
+                setInputLamentable(key.Lamentable)
+                setInputGoleadores(key.Goleadores)
+                setInputPartidos(key.Partidos)
+                setInputOctavos(key.Octavos)
+                setInputCuartos(key.Cuartos)
+                setInputSemis(key.Semis)
+                setInputFinal(key.Final)
             }
 
         });
@@ -75,7 +100,7 @@ const Usuario = () => {
                 <div> Revelacion: {inputRevelacion} </div>
                 <div> Lamentable: {inputLamentable} </div>
                 <div> Goleadores: {inputGoleadores.map((key) => <span>{key}, </span>)} </div>
-                {/* <Partidos /> */}
+                <Partidos />
                 {/* <div> Partidos: {inputPartidos.map((key) => <span>{key} </span>)} </div> */}
                 <div> Octavos: {inputOctavos.map((key) => <span>{key} </span>)} </div>
                 <div> Cuartos: {inputCuartos.map((key) => <span>{key} </span>)} </div>

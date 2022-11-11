@@ -101,6 +101,7 @@ const Partidos = () => {
     const [grupo8ok, setGrupo8OK] = useState(false);
     const [seleccionGrupo, setSeleccionGrupo] = useState([]);
     const [partidosOK, setPartidosOk] = useState(false);
+    const [modoUser, setModoUser] = useState(false);
 
 
     const setGrupoHandler1 = (inputGrupo, grupoOK, id) => {
@@ -137,6 +138,9 @@ const Partidos = () => {
 
     useEffect(() => {
         addGrupos(grupo1, grupo2, grupo3, grupo4, grupo5, grupo6, grupo7, grupo8);
+        if (params.usuario) {
+            setModoUser(true)
+        }
 
     }, [grupo1, grupo2, grupo3, grupo4, grupo5, grupo6, grupo7, grupo8])
 
@@ -163,7 +167,8 @@ const Partidos = () => {
 
             console.log('buscando prodes');
 
-            const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
+            // const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
+            const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode');
             const data = await response.json();
 
             if (!response.ok) {
@@ -171,7 +176,8 @@ const Partidos = () => {
             }
             let prodes1 = []
 
-            prodes1 = Object.entries(data)
+            // prodes1 = Object.entries(data)
+            prodes1 = data.body
             setProdes(prodes1)
 
             console.log(prodes)
@@ -207,9 +213,10 @@ const Partidos = () => {
             </div>
 
             <div>
-                <div id="reglascampeon" className={classes.reglas}>
-                    Seleccioná quien gana o si es empate.<br />Entrega <strong>2 puntos</strong> por cada acierto. <br /> Tenes 7 elecciones por grupo (una doble eleccion en algun partido del grupo)
-                </div>
+                {modoUser ? <div></div> :
+                    <div id="reglascampeon" className={classes.reglas}>
+                        Seleccioná quien gana o si es empate.<br />Entrega <strong>2 puntos</strong> por cada acierto. <br /> Tenes 7 elecciones por grupo (una doble eleccion en algun partido del grupo)
+                    </div>}
 
                 <div className={classes.grid}>
 

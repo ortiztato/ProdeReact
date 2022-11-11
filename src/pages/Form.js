@@ -132,8 +132,11 @@ function Form() {
                 <select className='select' onChange={ligaHandler}>
                     <option></option>
                     <option>LigaPrueba</option>
-                    <option>Superleague</option>
+                    <option>Paloma Grosor</option>
                     <option>Halcon</option>
+                    <option>Dotras</option>
+                    <option>Balanz</option>
+                    <option>Calis Bitches</option>
                 </select>
 
                 {ctx.undefinedInputs === 0 /* cambiar esto despues */ ? <button className='bidsubmitbutton' onClick={submitOK}> ENVIAR </button> : <button className='bidsubmitbuttonerror' onClick={submitError}> ENVIAR </button>}

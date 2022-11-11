@@ -23,17 +23,23 @@ const Ligas = () => {
 
     console.log('buscando prodes');
 
-    const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
+    // const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
+    const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode');
     const data = await response.json();
 
     if (!response.ok) {
       throw new Error(data.message || 'Could not fetch quotes.');
     }
 
-    prodes = Object.entries(data)
+    // prodes = Object.entries(data)
+    prodes = data.body
+
+    // prodes.map((key) => (
+    //   LigasArr.push(key[1].Liga.trim().toLowerCase())
+    // ));
 
     prodes.map((key) => (
-      LigasArr.push(key[1].Liga.trim().toLowerCase())
+      LigasArr.push(key.Liga.trim().toLowerCase())
     ));
 
     LigasArrSinDuplicate = [...new Set(LigasArr)];

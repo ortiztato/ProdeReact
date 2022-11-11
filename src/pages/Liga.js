@@ -22,19 +22,22 @@ const Liga = () => {
 
         console.log('buscando prodes');
 
-        const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
+        // const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
+        const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode');
         const data = await response.json();
 
         if (!response.ok) {
             throw new Error(data.message || 'Could not fetch quotes.');
         }
 
-        prodes = Object.entries(data)
-        /* console.log(prodes) */
+        // prodes = Object.entries(data)
+        prodes = data.body
+        console.log(prodes)
+        console.log(params.liganame)
 
         prodes.map((key) => {
-            if (key[1].Liga === params.liganame) {
-                UsuariosArr.push(key[1].Nombre)
+            if (key.Liga === params.liganame) {
+                UsuariosArr.push(key.Nombre)
             }
 
         });
@@ -43,6 +46,8 @@ const Liga = () => {
         console.log(Usuarios)
 
     }
+
+    const alertaFecha = () => { alert('El prode de cada jugador se va a poder ver cuando cierre la fecha limite') }
 
     return (
         <div className={classes.ligaPage}>
@@ -56,8 +61,11 @@ const Liga = () => {
                 {Usuarios.map((key) => (
 
                     <div className={classes.usuarioItem}>
+                        {params.liganame === 'ligaprueba'
+                            ? <Link className={classes.Ligaitem} to={`/ligas/${params.liganame}/${key}`}>{key} </Link>
+                            : <div className={classes.Ligaitem} onClick={alertaFecha}>{key} </div>
+                        }
 
-                        <Link className={classes.Ligaitem} to={`/ligas/${params.liganame}/${key}`}>{key} </Link>
                         <div className={classes.puntajeJugador}> 0 </div>
                     </div>
 

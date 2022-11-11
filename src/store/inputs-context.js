@@ -37,15 +37,26 @@ export const InputsContextProvider = (props) => {
     Nombre: inputNombre,
     Liga: inputLiga,
     Ganador: inputGanador,
+    GanadorPtos: 0,
     Desilusion: inputDesilusion,
+    DesilusionPtos: 0,
     Revelacion: inputRevelacion,
+    RevelacionPtos: 0,
     Lamentable: inputLamentable,
+    LamentablePtos: 0,
     Goleadores: inputGoleadores,
+    GoleadoresPtos: 0,
     Partidos: inputPartidos,
+    PartidosPtos: 0,
     Octavos: inputOctavos,
+    OctavosPtos: 0,
     Cuartos: inputCuartos,
+    CuartosPtos: 0,
     Semis: inputSemis,
+    SemisPtos: 0,
     Final: inputFinal,
+    FinalPtos: 0,
+    TotalPtos: 0,
   }
 
 
@@ -58,7 +69,7 @@ export const InputsContextProvider = (props) => {
       return !value; // the condition for filter. Change this as you need.
     });
 
-    setUndefinedInputs(+filteredUser.length)
+    setUndefinedInputs(+filteredUser.length - 11)
 
 
   }, [globalInput])
@@ -116,8 +127,8 @@ export const InputsContextProvider = (props) => {
 
 
   async function submitFormHandler() {
-    const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json', {
-      // const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode', {
+    // const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json', {
+    const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode', {
       method: 'POST',
       body: JSON.stringify(globalInput),
       headers: {
