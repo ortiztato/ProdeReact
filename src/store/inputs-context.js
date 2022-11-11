@@ -120,9 +120,9 @@ export const InputsContextProvider = (props) => {
     const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode', {
       method: 'POST',
       body: JSON.stringify(globalInput),
-      /* headers: {
+      headers: {
         'Content-Type': 'application/json'
-      } */
+      }
     });
     const data = await response.json();
     console.log(data);
