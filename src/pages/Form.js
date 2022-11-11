@@ -122,7 +122,8 @@ function Form() {
                 <input
                     name="usuario"
                     type="text"
-                    onChange={nombreHandler} />
+                    onChange={nombreHandler}
+                    autoComplete='off' />
                 <br />
                 <label>Liga:</label><br />
                 {/* <input
