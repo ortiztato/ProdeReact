@@ -145,7 +145,7 @@ function Form() {
             </div>
             <div className='undefinedInputsicon'>
                 {ctx.undefinedInputs !== 0
-                    ? <div> <br /> <img src={undefinedInputsicon} alt="undefinedInputs" /> <br /> {ctx.undefinedInputs} <br /> </div>
+                    ? <div> <br /> <img src={undefinedInputsicon} alt="undefinedInputs" /> <br />faltan {ctx.undefinedInputs} <br /> </div>
                     : <div> <br /> <img src={InputsOkicon} alt="InputsOK" /> </div>
                 }
 
