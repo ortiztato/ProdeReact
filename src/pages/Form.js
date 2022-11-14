@@ -32,9 +32,39 @@ function Form() {
 
     const [modal, setModal] = useState();
     const [liga, setLiga] = useState();
+    const [userExists, setUserExists] = useState();
 
-    const nombreHandler = (event) => {
-        ctx.nombre(event.target.value);
+    const nombreHandler = async (event) => {
+
+        console.log('buscando prodes');
+
+        const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode/names');
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || 'Could not fetch quotes.');
+        }
+
+        let prodes = []
+        prodes = data.body
+
+        let arr = []
+
+        prodes.map((key) => arr.push(key.Nombre))
+        const User = event.target.value
+        let Exists = arr.includes(User)
+        console.log('User is included? ' + Exists)
+
+        if (Exists) {
+            setUserExists(true)
+            ctx.nombre()
+        }
+        else {
+            setUserExists(false)
+            ctx.nombre(event.target.value);
+        }
+
+        // ctx.nombre(event.target.value);
     };
 
     const ligaHandler = (event) => {
@@ -118,7 +148,7 @@ function Form() {
             <Semis />
             <Final />
             <div className='divsubmit'>
-                <label>Nombre:</label><br />
+                <label>Nombre: <span className='errorNombre'>{userExists ? 'Nombre ya utilizado!' : ''}</span></label><br />
                 <input
                     name="usuario"
                     type="text"

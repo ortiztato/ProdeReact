@@ -429,6 +429,10 @@ input:checked {
   height: 25px;
 }
 
+.errorNombre {
+  color: #de0000;
+  font-weight: bold;
+}
 
 
 
