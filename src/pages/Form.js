@@ -164,18 +164,19 @@ function Form() {
                     onChange={ligaHandler} /> */}
                 <select className='select' onChange={ligaHandler}>
                     <option></option>
-                    <option>LigaPrueba</option>
+                    {/* <option>LigaPrueba</option>
                     <option>Paloma Grosor</option>
                     <option>Halcon</option>
                     <option>Dotras</option>
                     <option>Balanz</option>
                     <option>Calis Bitches</option>
                     <option>Chaja</option>
-                    <option>LFG</option>
+                    <option>LFG</option> */}
+                    <option>Romero Campeon</option>
                 </select>
 
 
-                {ctx.undefinedInputs === 0 /* cambiar esto despues */ ? <button className='bidsubmitbutton' onClick={alertaVencido}> ENVIAR </button> : <button className='bidsubmitbuttonerror' onClick={alertaVencido}> ENVIAR </button>}
+                {ctx.undefinedInputs === 0 /* cambiar esto despues */ ? <button className='bidsubmitbutton' onClick={submitOK}> ENVIAR </button> : <button className='bidsubmitbuttonerror' onClick={submitError}> ENVIAR </button>}
 
             </div>
             <div className='undefinedInputsicon'>
@@ -185,6 +186,7 @@ function Form() {
                 }
 
             </div>
+
             {/* <div className='iraligas' >
                 ir a  <Link to={`/ligas/`}>LIGAS</Link>
             </div> */}
