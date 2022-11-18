@@ -61,11 +61,7 @@ const Liga = () => {
                 {Usuarios.map((key) => (
 
                     <div className={classes.usuarioItem}>
-                        {params.liganame === 'ligaprueba'
-                            ? <Link className={classes.Ligaitem} to={`/ligas/${params.liganame}/${key}`}>{key} </Link>
-                            : <div className={classes.Ligaitem} onClick={alertaFecha}>{key} </div>
-                        }
-
+                        <Link className={classes.Ligaitem} to={`/ligas/${params.liganame}/${key}`}>{key} </Link>
                         <div className={classes.puntajeJugador}> 0 </div>
                     </div>
 

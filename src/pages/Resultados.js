@@ -3,10 +3,17 @@ import { useState } from "react";
 
 const Resultados = () => {
 
+    const Ganador = {
+        Brasil: 10,
+        Argentina: 5
+    }
+
+    const Eleccion = 'Argentina'
+
 
     const [prodes, setProdes] = useState([]);
 
-    async function fetchProdesNames() {
+    async function postPuntajeGanador() {
 
         console.log('buscando prodes');
 
@@ -20,20 +27,34 @@ const Resultados = () => {
         let prodes = []
         prodes = data.body
 
-        let arr = []
 
-        prodes.map((key) => arr.push(key.Nombre))
-        const User = 'Gochi'
-        let Exists = arr.includes(User)
-        console.log('Gochi is included? ' + Exists)
-
-        setProdes(Exists)
+        prodes.map(async (key) => {
+            let id = key.id
+            let puntajeGanador = Ganador[key.Ganador]
+            let dataPuntaje = {
+                id: id,
+                puntajeGanador: puntajeGanador
+            }
+            const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode/CAMBIARBIENLARUTA', {
+                method: 'POST',
+                body: JSON.stringify(dataPuntaje),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+            console.log(data);
+        })
 
     }
 
 
+
+
     useEffect(() => {
-        fetchProdesNames()
+        // fetchProdesNames()
+        postPuntajeGanador()
+
     }, [])
 
 

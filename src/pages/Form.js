@@ -123,6 +123,8 @@ function Form() {
         /* history.push("/home"); */
     };
 
+    const alertaVencido = () => { alert('Fecha limite de presentacion expirada') }
+
 
 
     return (
@@ -172,7 +174,8 @@ function Form() {
                     <option>LFG</option>
                 </select>
 
-                {ctx.undefinedInputs === 0 /* cambiar esto despues */ ? <button className='bidsubmitbutton' onClick={submitOK}> ENVIAR </button> : <button className='bidsubmitbuttonerror' onClick={submitError}> ENVIAR </button>}
+
+                {ctx.undefinedInputs === 0 /* cambiar esto despues */ ? <button className='bidsubmitbutton' onClick={alertaVencido}> ENVIAR </button> : <button className='bidsubmitbuttonerror' onClick={alertaVencido}> ENVIAR </button>}
 
             </div>
             <div className='undefinedInputsicon'>
@@ -192,3 +195,7 @@ function Form() {
 }
 
 export default Form;
+
+
+// funcion original
+// {ctx.undefinedInputs === 0 /* cambiar esto despues */ ? <button className='bidsubmitbutton' onClick={submitOK}> ENVIAR </button> : <button className='bidsubmitbuttonerror' onClick={submitError}> ENVIAR </button>}

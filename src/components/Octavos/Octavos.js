@@ -189,7 +189,7 @@ const Octavos = () => {
                     }}>
                         <div id="reglascampeon" className="reglas">
                             Elegí los 16 equipos que crees que llegan a los octavos de final.
-                            <br /> Por cada uno que llegue a semis te suma 2 puntos.
+                            <br /> Por cada uno que llegue a octavos te suma 2 puntos.
 
                         </div>
                     </div>)}

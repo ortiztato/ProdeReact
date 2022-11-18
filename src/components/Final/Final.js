@@ -181,7 +181,7 @@ const Final = () => {
             {equiposSemis.length < 2 && <div>
                 <div id="reglascampeon" className="reglas">
                     Elegí los 2 equipos que crees que llegan a la final.
-                    <br /> Por cada uno que llegue a semis te suma 5 puntos.
+                    <br /> Por cada uno que llegue a la final te suma 5 puntos.
 
                 </div>
             </div>}

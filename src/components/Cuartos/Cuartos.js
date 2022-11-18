@@ -182,7 +182,7 @@ const Cuartos = () => {
             {equiposSemis.length < 8 && <div>
                 <div id="reglascampeon" className="reglas">
                     Elegí los 8 equipos que crees que llegan a los cuartos de final.
-                    <br /> Por cada uno que llegue a semis te suma 3 puntos.
+                    <br /> Por cada uno que llegue a cuartos te suma 3 puntos.
 
                 </div>
             </div>}
