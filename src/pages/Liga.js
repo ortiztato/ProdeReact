@@ -37,11 +37,12 @@ const Liga = () => {
 
         prodes.map((key) => {
             if (key.Liga === params.liganame) {
-                UsuariosArr.push(key.Nombre)
-                // UsuariosArr.push(key)
+                // UsuariosArr.push(key.Nombre)
+                UsuariosArr.push(key)
             }
             if ('GENERAL' === params.liganame) {
-                UsuariosArr.push(key.Nombre)
+                // UsuariosArr.push(key.Nombre)
+                UsuariosArr.push(key)
 
             }
 
@@ -66,8 +67,10 @@ const Liga = () => {
                 {Usuarios.map((key) => (
 
                     <div className={classes.usuarioItem}>
-                        <Link className={classes.Ligaitem} to={`/ligas/${params.liganame}/${key}`}>{key} </Link>
-                        <div className={classes.puntajeJugador}> 0 </div>
+                        <Link className={classes.Ligaitem} to={`/ligas/${params.liganame}/${key.Nombre}`}>
+                            {key.Nombre}{params.liganame === 'GENERAL' && ` ( ${key.Liga} ) `}
+                        </Link>
+                        <div className={classes.puntajeJugador}> {key.TotalPtos} </div>
                     </div>
 
                 ))}</div>
