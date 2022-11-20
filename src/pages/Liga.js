@@ -39,6 +39,9 @@ const Liga = () => {
             if (key.Liga === params.liganame) {
                 UsuariosArr.push(key.Nombre)
             }
+            if ('GENERAL' === params.liganame) {
+                UsuariosArr.push(key.Nombre)
+            }
 
         });
 

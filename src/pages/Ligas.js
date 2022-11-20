@@ -61,6 +61,7 @@ const Ligas = () => {
             <div className={classes.usuarioItem}><Link className={classes.Ligaitem} to={`/ligas/${key}`}>{key}</Link></div>
 
           ))}
+          <div className={classes.usuarioItem}><Link className={classes.Ligaitem} to={`/ligas/GENERAL`}>GENERAL</Link></div>
         </div>
       </Route>
 
