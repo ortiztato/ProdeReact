@@ -66,7 +66,7 @@ const Liga = () => {
 
                     <div className={classes.usuarioItem}>
                         <Link className={classes.Ligaitem} to={`/ligas/${params.liganame}/${key}`}>{key} </Link>
-                        <div className={classes.puntajeJugador}> 0 </div>
+                        <div className={classes.puntajeJugador}> {key.TotalPtos} </div>
                     </div>
 
                 ))}</div>
