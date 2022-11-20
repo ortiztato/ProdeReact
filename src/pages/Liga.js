@@ -20,7 +20,7 @@ const Liga = () => {
 
     async function fetchUsuarios() {
 
-        console.log('buscando prodes');
+
 
         // const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
         const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode');
@@ -32,8 +32,8 @@ const Liga = () => {
 
         // prodes = Object.entries(data)
         prodes = data.body
-        console.log(prodes)
-        console.log(params.liganame)
+        // console.log(prodes)
+
 
         prodes.map((key) => {
             if (key.Liga === params.liganame) {
@@ -41,12 +41,13 @@ const Liga = () => {
             }
             if ('GENERAL' === params.liganame) {
                 UsuariosArr.push(key.Nombre)
+                console.log(key.Lamentable)
             }
 
         });
 
         setUsuarios(UsuariosArr)
-        console.log(Usuarios)
+
 
     }
 

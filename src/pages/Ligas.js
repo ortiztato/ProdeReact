@@ -21,7 +21,7 @@ const Ligas = () => {
 
   async function fetchProdes() {
 
-    console.log('buscando prodes');
+
 
     // const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
     const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode');

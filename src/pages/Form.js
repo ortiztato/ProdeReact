@@ -164,8 +164,8 @@ function Form() {
                     onChange={ligaHandler} /> */}
                 <select className='select' onChange={ligaHandler}>
                     <option></option>
-                    {/* <option>LigaPrueba</option>
-                    <option>Paloma Grosor</option>
+                    <option>LigaPrueba</option>
+                    {/* <option>Paloma Grosor</option>
                     <option>Halcon</option>
                     <option>Dotras</option>
                     <option>Balanz</option>
