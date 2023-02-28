@@ -1,53 +1,38 @@
+import "./App.css";
 
-import './App.css';
+import Ligas from "./pages/Ligas";
+import Liga from "./pages/Liga";
+import Form from "./pages/Form";
+import Usuario from "./pages/Usuario";
+import Portada from "./pages/Portada";
 
-
-import Ligas from './pages/Ligas';
-import Liga from './pages/Liga';
-import Form from './pages/Form';
-import Usuario from './pages/Usuario';
-import Portada from './pages/Portada';
-import Resultados from './pages/Resultados';
-
-
-import React, { useContext, useState } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-
-
+import React from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 function App() {
-
-
-
-
   return (
     <div>
       <Switch>
-        <Route path='/portada' exact >
+        <Route path="/portada" exact>
           <Portada />
         </Route>
-        <Route path='/ligas' exact >
+        <Route path="/ligas" exact>
           <Ligas />
         </Route>
-        <Route path='/form' exact>
+        <Route path="/form" exact>
           <Form />
         </Route>
-        <Route path='/' exact>
-          <Redirect to='/portada' />
+        <Route path="/" exact>
+          <Redirect to="/portada" />
         </Route>
-        <Route path='/ligas/:liganame' exact>
+        <Route path="/ligas/:liganame" exact>
           <Liga />
         </Route>
-        <Route path='/ligas/:liganame/:usuario' exact>
+        <Route path="/ligas/:liganame/:usuario" exact>
           <Usuario />
-        </Route>
-        <Route path='/resultados' exact>
-          <Resultados />
         </Route>
       </Switch>
     </div>
-
-
   );
 }
 

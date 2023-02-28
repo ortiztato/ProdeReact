@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const InputsContext = React.createContext({
-  /* inputsLeft: 0, */
-  ganador: (inputGanador) => { },
-  desilusion: (inputDesilusion) => { },
-  revelacion: (inputRevelacion) => { },
-  lamentable: (inputLamentable) => { },
-  goleadores: (inputGoleadores) => { },
-  partidos: (inputPartidos) => { },
-  octavos: (inputOctavos) => { },
-  cuartos: (inputCuartos) => { },
-  semis: (inputSemis) => { },
-  final: (inputFinal) => { },
-  submitForm: () => { },
-
+  ganador: (inputGanador) => {},
+  desilusion: (inputDesilusion) => {},
+  revelacion: (inputRevelacion) => {},
+  lamentable: (inputLamentable) => {},
+  goleadores: (inputGoleadores) => {},
+  partidos: (inputPartidos) => {},
+  octavos: (inputOctavos) => {},
+  cuartos: (inputCuartos) => {},
+  semis: (inputSemis) => {},
+  final: (inputFinal) => {},
+  submitForm: () => {},
 });
 
 export const InputsContextProvider = (props) => {
-  /* const [inputsLeft, setInputsLeft] = useState(0); */
   const [inputGanador, setInputGanador] = useState();
   const [inputDesilusion, setInputDesilusion] = useState();
   const [inputRevelacion, setInputRevelacion] = useState();
@@ -31,7 +28,6 @@ export const InputsContextProvider = (props) => {
   const [inputNombre, setInputNombre] = useState();
   const [inputLiga, setInputLiga] = useState();
   const [undefinedInputs, setUndefinedInputs] = useState();
-
 
   const globalInput = {
     Nombre: inputNombre,
@@ -57,23 +53,17 @@ export const InputsContextProvider = (props) => {
     Final: inputFinal,
     FinalPtos: 0,
     TotalPtos: 0,
-  }
-
-
+  };
 
   useEffect(() => {
-
     let objArr = Object.entries(globalInput);
 
     const filteredUser = objArr.filter(function ([key, value]) {
       return !value; // the condition for filter. Change this as you need.
     });
 
-    setUndefinedInputs(+filteredUser.length - 11)
-
-
-  }, [globalInput])
-
+    setUndefinedInputs(+filteredUser.length - 11);
+  }, [globalInput]);
 
   const ganadorHandler = (inputGanador) => {
     setInputGanador(inputGanador);
@@ -123,29 +113,21 @@ export const InputsContextProvider = (props) => {
     setInputLiga(inputLiga);
   };
 
-
-
-
   async function submitFormHandler() {
-    // const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json', {
-    const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode', {
-      method: 'POST',
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL, {
+      method: "POST",
       body: JSON.stringify(globalInput),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     });
     const data = await response.json();
     console.log(data);
   }
 
-
-
-
   return (
     <InputsContext.Provider
       value={{
-        /*  inputsLeft: inputsLeft, */
         ganador: ganadorHandler,
         desilusion: desilusionHandler,
         revelacion: revelacionHandler,
@@ -160,7 +142,6 @@ export const InputsContextProvider = (props) => {
         liga: ligaHandler,
         submitForm: submitFormHandler,
         undefinedInputs: undefinedInputs,
-
       }}
     >
       {props.children}

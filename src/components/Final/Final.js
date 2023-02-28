@@ -1,210 +1,222 @@
 import ItemSemis from "./ItemFinal";
 
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from "react";
 import InputsContext from "../../store/inputs-context";
 
-
 const Final = () => {
+  const dataequiposSemis = [
+    {
+      id: "e1",
+      name: "Brasil",
+    },
+    {
+      id: "e2",
+      name: "Francia",
+    },
+    {
+      id: "e3",
+      name: "Inglaterra",
+    },
+    {
+      id: "e4",
+      name: "España",
+    },
+    {
+      id: "e5",
+      name: "Argentina",
+    },
+    {
+      id: "e6",
+      name: "Alemania",
+    },
+    {
+      id: "e7",
+      name: "Holanda",
+    },
+    {
+      id: "e8",
+      name: "Belgica",
+    },
+    {
+      id: "e9",
+      name: "Portugal",
+    },
+    {
+      id: "e10",
+      name: "Dinamarca",
+    },
+    {
+      id: "e11",
+      name: "Senegal",
+    },
+    {
+      id: "e12",
+      name: "Croacia",
+    },
+    {
+      id: "e13",
+      name: "Uruguay",
+    },
+    {
+      id: "e14",
+      name: "Suiza",
+    },
+    {
+      id: "e15",
+      name: "USA",
+    },
+    {
+      id: "e16",
+      name: "Serbia",
+    },
+    {
+      id: "e17",
+      name: "Mexico",
+    },
+    {
+      id: "e18",
+      name: "Polonia",
+    },
+    {
+      id: "e19",
+      name: "Qatar",
+    },
+    {
+      id: "e20",
+      name: "Gales",
+    },
+    {
+      id: "e21",
+      name: "Ghana",
+    },
+    {
+      id: "e22",
+      name: "Camerun",
+    },
+    {
+      id: "e23",
+      name: "Ecuador",
+    },
+    {
+      id: "e24",
+      name: "Canada",
+    },
+    {
+      id: "e25",
+      name: "Japon",
+    },
+    {
+      id: "e26",
+      name: "Corea",
+    },
+    {
+      id: "e27",
+      name: "Australia",
+    },
+    {
+      id: "e28",
+      name: "Iran",
+    },
+    {
+      id: "e29",
+      name: "Marruecos",
+    },
+    {
+      id: "e30",
+      name: "Arabia",
+    },
+    {
+      id: "e31",
+      name: "Tunez",
+    },
+    {
+      id: "e32",
+      name: "Costa Rica",
+    },
+  ];
 
-    const dataequiposSemis = [
-        {
-            id: 'e1',
-            name: 'Brasil'
-        },
-        {
-            id: 'e2',
-            name: 'Francia'
-        },
-        {
-            id: 'e3',
-            name: 'Inglaterra'
-        },
-        {
-            id: 'e4',
-            name: 'España'
-        },
-        {
-            id: 'e5',
-            name: 'Argentina'
-        },
-        {
-            id: 'e6',
-            name: 'Alemania'
-        },
-        {
-            id: 'e7',
-            name: 'Holanda'
-        },
-        {
-            id: 'e8',
-            name: 'Belgica'
-        },
-        {
-            id: 'e9',
-            name: 'Portugal'
-        },
-        {
-            id: 'e10',
-            name: 'Dinamarca'
-        }, {
-            id: 'e11',
-            name: 'Senegal'
-        }, {
-            id: 'e12',
-            name: 'Croacia'
-        }, {
-            id: 'e13',
-            name: 'Uruguay'
-        }, {
-            id: 'e14',
-            name: 'Suiza'
-        }, {
-            id: 'e15',
-            name: 'USA'
-        }, {
-            id: 'e16',
-            name: 'Serbia'
-        }, {
-            id: 'e17',
-            name: 'Mexico'
-        }, {
-            id: 'e18',
-            name: 'Polonia'
-        }, {
-            id: 'e19',
-            name: 'Qatar'
-        }, {
-            id: 'e20',
-            name: 'Gales'
-        }, {
-            id: 'e21',
-            name: 'Ghana'
-        }, {
-            id: 'e22',
-            name: 'Camerun'
-        }, {
-            id: 'e23',
-            name: 'Ecuador'
-        }, {
-            id: 'e24',
-            name: 'Canada'
-        }, {
-            id: 'e25',
-            name: 'Japon'
-        }, {
-            id: 'e26',
-            name: 'Corea'
-        }, {
-            id: 'e27',
-            name: 'Australia'
-        }, {
-            id: 'e28',
-            name: 'Iran'
-        }, {
-            id: 'e29',
-            name: 'Marruecos'
-        }, {
-            id: 'e30',
-            name: 'Arabia'
-        }, {
-            id: 'e31',
-            name: 'Tunez'
-        }, {
-            id: 'e32',
-            name: 'Costa Rica'
-        },
+  const ctx = useContext(InputsContext);
 
-    ]
+  const [equiposSemis, setEquiposSemis] = useState([]);
+  const [edit, setedit] = useState(false);
+  const [full, setFull] = useState(false);
 
-    const ctx = useContext(InputsContext);
-
-    const [equiposSemis, setEquiposSemis] = useState([]);
-    const [edit, setedit] = useState(false);
-    const [full, setFull] = useState(false);
-
-
-
-    const equipoSelectHandler = (equipoSelected, add) => {
-        if (add) {
-            setEquiposSemis(prevArray => [...prevArray, equipoSelected]);
-        }
-        else {
-            function arrayRemove(arr, value) {
-
-                return arr.filter(function (ele) {
-                    return ele !== value;
-                });
-            }
-            let remArray = arrayRemove(equiposSemis, equipoSelected)
-            setEquiposSemis(remArray);
-        }
-    };
-
-
-    const editarSemis = () => {
-        setEquiposSemis([]);
-        setedit(!edit)
+  const equipoSelectHandler = (equipoSelected, add) => {
+    if (add) {
+      setEquiposSemis((prevArray) => [...prevArray, equipoSelected]);
+    } else {
+      function arrayRemove(arr, value) {
+        return arr.filter(function (ele) {
+          return ele !== value;
+        });
+      }
+      let remArray = arrayRemove(equiposSemis, equipoSelected);
+      setEquiposSemis(remArray);
     }
+  };
 
-    useEffect(() => {
-        if (equiposSemis.length === 2) {
-            setFull(true)
-            ctx.final(equiposSemis)
-        }
-        else {
-            setFull(false)
-            ctx.final()
-        };
-    }, [equiposSemis, full])
+  const editarSemis = () => {
+    setEquiposSemis([]);
+    setedit(!edit);
+  };
 
+  useEffect(() => {
+    if (equiposSemis.length === 2) {
+      setFull(true);
+      ctx.final(equiposSemis);
+    } else {
+      setFull(false);
+      ctx.final();
+    }
+  }, [equiposSemis, full]);
 
-    /* const equiposSemisDisplay = equiposSemis.map((equipo) => <span>{equipo}</span>); */
-    const equiposSemisDisplay = <span>Incompleto</span>;
+  const equiposSemisDisplay = <span>Incompleto</span>;
 
-    let resultado
-    if (equiposSemis.length < 2) {
-        resultado = 'resultadoincompleto'
-    } else { resultado = 'resultadocampeon' }
+  let resultado;
+  if (equiposSemis.length < 2) {
+    resultado = "resultadoincompleto";
+  } else {
+    resultado = "resultadocampeon";
+  }
 
+  return (
+    <section className="sectionequipos">
+      <div className="subtituloequipos">
+        Equipos en Final
+        <span
+          className={resultado}
+          style={{ display: full || equiposSemis.length === 0 ? "none" : "" }}
+        >
+          {equiposSemisDisplay}
+        </span>
+        {equiposSemis.length > 0 && (
+          <span className="editar" onClick={editarSemis}>
+            editar
+          </span>
+        )}
+      </div>
 
-
-    return (
-        <section className="sectionequipos">
-            <div className="subtituloequipos">Equipos en Final
-                <span className={resultado} style={{ display: full || equiposSemis.length === 0 ? 'none' : '' }}>
-                    {equiposSemisDisplay}
-                </span>
-                {equiposSemis.length > 0 && <span className="editar" onClick={editarSemis}>editar</span>}
-
-            </div>
-
-            {equiposSemis.length < 2 && <div>
-                <div id="reglascampeon" className="reglas">
-                    Elegí los 2 equipos que crees que llegan a la final.
-                    <br /> Por cada uno que llegue a la final te suma 5 puntos.
-
-                </div>
-            </div>}
-            <div className="grid">
-
-                {dataequiposSemis.map((key) => (
-                    <ItemSemis
-                        name={key.name}
-                        key={key.id}
-                        onEquipoClick={equipoSelectHandler}
-                        edit={edit}
-                        full={full}
-                    />
-                ))}
-            </div>
-
-
-
-
-
-
-        </section>
-    );
+      {equiposSemis.length < 2 && (
+        <div>
+          <div id="reglascampeon" className="reglas">
+            Elegí los 2 equipos que crees que llegan a la final.
+            <br /> Por cada uno que llegue a la final te suma 5 puntos.
+          </div>
+        </div>
+      )}
+      <div className="grid">
+        {dataequiposSemis.map((key) => (
+          <ItemSemis
+            name={key.name}
+            key={key.id}
+            onEquipoClick={equipoSelectHandler}
+            edit={edit}
+            full={full}
+          />
+        ))}
+      </div>
+    </section>
+  );
 };
 
 export default Final;
