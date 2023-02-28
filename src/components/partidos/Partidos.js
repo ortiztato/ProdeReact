@@ -202,6 +202,7 @@ const Partidos = () => {
     if (params.usuario) {
       console.log("buscando prodes");
 
+<<<<<<< HEAD
       // const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
       const response = await fetch(process.env.REACT_APP_BACKEND_URL);
       const data = await response.json();
@@ -266,4 +267,60 @@ const Partidos = () => {
   );
 };
 
+=======
+      const response = await fetch(process.env.BACKEND_URL);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Could not fetch quotes.");
+      }
+      let prodes1 = [];
+
+      prodes1 = data.body;
+      setProdes(prodes1);
+
+      console.log(prodes);
+    }
+  }
+
+  useEffect(() => {
+    fetchProdes();
+  }, []);
+
+  return (
+    <section className={classes.sectionequipos}>
+      <div className={classes.subtituloequipos}>Partidos</div>
+
+      <div>
+        {modoUser ? (
+          <div></div>
+        ) : (
+          <div id="reglascampeon" className={classes.reglas}>
+            Seleccioná quien gana o si es empate.
+            <br />
+            Entrega <strong>2 puntos</strong> por cada acierto. <br /> Tenes 7
+            elecciones por grupo (una doble eleccion en algun partido del grupo)
+          </div>
+        )}
+
+        <div className={classes.grid}>
+          {Grupos.map((key) => (
+            <Grupo
+              id={key.id}
+              name={key.name}
+              equipo1={key.equipo1}
+              equipo2={key.equipo2}
+              equipo3={key.equipo3}
+              equipo4={key.equipo4}
+              setGrupoHandler={setGrupoHandler1}
+              prodes={prodes}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+>>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
 export default Partidos;

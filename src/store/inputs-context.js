@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 const InputsContext = React.createContext({
+<<<<<<< HEAD
+=======
+  /* inputsLeft: 0, */
+>>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
   ganador: (inputGanador) => {},
   desilusion: (inputDesilusion) => {},
   revelacion: (inputRevelacion) => {},
@@ -114,7 +118,11 @@ export const InputsContextProvider = (props) => {
   };
 
   async function submitFormHandler() {
+<<<<<<< HEAD
     const response = await fetch(process.env.REACT_APP_BACKEND_URL, {
+=======
+    const response = await fetch(process.env.BACKEND_URL, {
+>>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
       method: "POST",
       body: JSON.stringify(globalInput),
       headers: {

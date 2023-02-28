@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 
 import classes from "./Ligas.module.css";
 
+<<<<<<< HEAD
 import { Route, Link } from "react-router-dom";
+=======
+import { Route, Link, Switch, Redirect } from "react-router-dom";
+
+import Liga from "./Liga";
+>>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
 
 const Ligas = () => {
   let prodes = [];
@@ -15,7 +21,11 @@ const Ligas = () => {
   }, []);
 
   async function fetchProdes() {
+<<<<<<< HEAD
     const response = await fetch(process.env.REACT_APP_BACKEND_URL);
+=======
+    const response = await fetch(process.env.BACKEND_URL);
+>>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
     const data = await response.json();
 
     if (!response.ok) {
