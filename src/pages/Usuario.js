@@ -1,159 +1,190 @@
-import classes from './Ligas.module.css'
+import classes from "./Ligas.module.css";
 
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { Route, Link, Switch, Redirect } from 'react-router-dom';
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-import Partidos from '../components/partidos/Partidos';
+import Partidos from "../components/partidos/Partidos";
 
 const Usuario = () => {
+  const params = useParams();
 
-    const params = useParams();
+  let prodes = [];
+  const [inputGanador, setInputGanador] = useState();
+  const [inputDesilusion, setInputDesilusion] = useState();
+  const [inputRevelacion, setInputRevelacion] = useState();
+  const [inputLamentable, setInputLamentable] = useState();
+  const [inputGoleadores, setInputGoleadores] = useState([]);
+  const [inputPartidos, setInputPartidos] = useState([]);
+  const [inputOctavos, setInputOctavos] = useState([]);
+  const [inputCuartos, setInputCuartos] = useState([]);
+  const [inputSemis, setInputSemis] = useState([]);
+  const [inputFinal, setInputFinal] = useState([]);
+  const [GanadorPtos, setGanadorPtos] = useState();
+  const [DesilusionPtos, setDesilusionPtos] = useState();
+  const [LamentablePtos, setLamentablePtos] = useState();
+  const [RevelacionPtos, setRevelacionPtos] = useState();
+  const [OctavosPtos, setOctavosPtos] = useState();
+  const [CuartosPtos, setCuartosPtos] = useState();
+  const [SemisPtos, setSemisPtos] = useState();
+  const [FinalPtos, setFinalPtos] = useState();
+  const [GoleadoresPtos, setGoleadoresPtos] = useState();
+  const [PartidosPtos, setPartidosPtos] = useState();
+  const [TotalPtos, setTotalPtos] = useState();
 
+  useEffect(() => {
+    fetchInputs();
+  }, []);
 
-    let prodes = [];
-    const [inputGanador, setInputGanador] = useState();
-    const [inputDesilusion, setInputDesilusion] = useState();
-    const [inputRevelacion, setInputRevelacion] = useState();
-    const [inputLamentable, setInputLamentable] = useState();
-    const [inputGoleadores, setInputGoleadores] = useState([]);
-    const [inputPartidos, setInputPartidos] = useState([]);
-    const [inputOctavos, setInputOctavos] = useState([]);
-    const [inputCuartos, setInputCuartos] = useState([]);
-    const [inputSemis, setInputSemis] = useState([]);
-    const [inputFinal, setInputFinal] = useState([]);
-    const [GanadorPtos, setGanadorPtos] = useState();
-    const [DesilusionPtos, setDesilusionPtos] = useState();
-    const [LamentablePtos, setLamentablePtos] = useState();
-    const [RevelacionPtos, setRevelacionPtos] = useState();
-    const [OctavosPtos, setOctavosPtos] = useState();
-    const [CuartosPtos, setCuartosPtos] = useState();
-    const [SemisPtos, setSemisPtos] = useState();
-    const [FinalPtos, setFinalPtos] = useState();
-    const [GoleadoresPtos, setGoleadoresPtos] = useState();
-    const [PartidosPtos, setPartidosPtos] = useState();
-    const [TotalPtos, setTotalPtos] = useState();
+  async function fetchInputs() {
+    console.log("buscando prodes");
 
+    const response = await fetch(process.env.BACKEND_URL);
+    const data = await response.json();
 
-
-    useEffect(() => {
-        fetchInputs()
-    }, [])
-
-    async function fetchInputs() {
-
-        console.log('buscando prodes');
-
-        // const response = await fetch('https://prueba-food-order-app-default-rtdb.firebaseio.com/prodes.json');
-        const response = await fetch('https://prode-backend-ogd69.ondigitalocean.app/prode');
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.message || 'Could not fetch quotes.');
-        }
-
-        // prodes = Object.entries(data)
-        prodes = data.body
-        console.log(prodes)
-        console.log(params.usuario)
-
-        /*  prodes.map((key) => {
- 
- 
-             if (key[1].Nombre === params.usuario) {
- 
-                 setInputGanador(key[1].Ganador)
-                 setInputDesilusion(key[1].Desilusion)
-                 setInputRevelacion(key[1].Revelacion)
-                 setInputLamentable(key[1].Lamentable)
-                 setInputGoleadores(key[1].Goleadores)
-                 setInputPartidos(key[1].Partidos)
-                 setInputOctavos(key[1].Octavos)
-                 setInputCuartos(key[1].Cuartos)
-                 setInputSemis(key[1].Semis)
-                 setInputFinal(key[1].Final)
-             }
- 
-         }); */
-
-        prodes.map((key) => {
-
-
-            if (key.Nombre === params.usuario) {
-
-                console.log('hay coincidencia')
-                console.log(key.Partidos)
-
-                setInputGanador(key.Ganador)
-                setInputDesilusion(key.Desilusion)
-                setInputRevelacion(key.Revelacion)
-                setInputLamentable(key.Lamentable)
-                setInputGoleadores(key.Goleadores)
-                setInputPartidos(key.Partidos)
-                setInputOctavos(key.Octavos)
-                setInputCuartos(key.Cuartos)
-                setInputSemis(key.Semis)
-                setInputFinal(key.Final)
-                setGanadorPtos(key.GanadorPtos)
-                setDesilusionPtos(key.DesilusionPtos)
-                setLamentablePtos(key.LamentablePtos)
-                setRevelacionPtos(key.RevelacionPtos)
-                setOctavosPtos(key.OctavosPtos)
-                setCuartosPtos(key.CuartosPtos)
-                setSemisPtos(key.SemisPtos)
-                setFinalPtos(key.FinalPtos)
-                setGoleadoresPtos(key.GoleadoresPtos)
-                setPartidosPtos(key.PartidosPtos)
-                setTotalPtos(key.TotalPtos)
-            }
-
-
-
-
-        });
-
-
-
+    if (!response.ok) {
+      throw new Error(data.message || "Could not fetch quotes.");
     }
 
-    return (
-        <div className={classes.ligaPage}>
-            <div className={classes.tituloLiga}>{params.usuario}</div>
-            <div className={classes.inputsItem}>
-                <div className={classes.tituloPuntosUsuario}> <strong>Total Puntos: {TotalPtos}</strong>  </div>
-                <div className={classes.containerPuntaje}><div> <strong>Ganador:</strong> {inputGanador}</div><div className={classes.puntajeItemUsuario}>{GanadorPtos}</div></div><hr />
-                <div className={classes.containerPuntaje}><div> <strong>Desilusion:</strong> {inputDesilusion}</div><div className={classes.puntajeItemUsuario}>{DesilusionPtos}</div></div><hr />
-                <div className={classes.containerPuntaje}><div> <strong>Revelacion:</strong> {inputRevelacion}</div><div className={classes.puntajeItemUsuario}>{RevelacionPtos}</div></div><hr />
-                <div className={classes.containerPuntaje}><div> <strong>Lamentable:</strong> {inputLamentable}</div><div className={classes.puntajeItemUsuario}>{LamentablePtos}</div></div><hr />
-                <div className={classes.containerPuntaje}><div> <strong>Goleadores:</strong> {inputGoleadores.map((key) => <span>{key}, </span>)} </div><div className={classes.puntajeItemUsuario}>{GoleadoresPtos}</div></div>
-                <br />
-                <Partidos />
-                <div className={classes.containerPuntaje}><div> <strong>Puntos Partidos:</strong></div><div>{PartidosPtos}</div></div><hr />
-                {/* <div> Partidos: {inputPartidos.map((key) => <span>{key} </span>)} </div> */}
-                <div className={classes.containerPuntaje}><div> <strong>Octavos:</strong> {inputOctavos.map((key) => <span>{key} </span>)} </div><div className={classes.puntajeItemUsuario}>{OctavosPtos}</div></div><hr />
-                <div className={classes.containerPuntaje}><div> <strong>Cuartos:</strong> {inputCuartos.map((key) => <span>{key} </span>)} </div><div className={classes.puntajeItemUsuario}>{CuartosPtos}</div></div><hr />
-                <div className={classes.containerPuntaje}><div> <strong>Semis:</strong> {inputSemis.map((key) => <span>{key} </span>)} </div><div className={classes.puntajeItemUsuario}>{SemisPtos}</div></div><hr />
-                <div className={classes.containerPuntaje}><div> <strong>Final:</strong> {inputFinal.map((key) => <span>{key} </span>)} </div><div className={classes.puntajeItemUsuario}>{FinalPtos}</div></div>
+    prodes = data.body;
+    console.log(prodes);
+    console.log(params.usuario);
 
+    prodes.map((key) => {
+      if (key.Nombre === params.usuario) {
+        console.log("hay coincidencia");
+        console.log(key.Partidos);
 
-            </div>
+        setInputGanador(key.Ganador);
+        setInputDesilusion(key.Desilusion);
+        setInputRevelacion(key.Revelacion);
+        setInputLamentable(key.Lamentable);
+        setInputGoleadores(key.Goleadores);
+        setInputPartidos(key.Partidos);
+        setInputOctavos(key.Octavos);
+        setInputCuartos(key.Cuartos);
+        setInputSemis(key.Semis);
+        setInputFinal(key.Final);
+        setGanadorPtos(key.GanadorPtos);
+        setDesilusionPtos(key.DesilusionPtos);
+        setLamentablePtos(key.LamentablePtos);
+        setRevelacionPtos(key.RevelacionPtos);
+        setOctavosPtos(key.OctavosPtos);
+        setCuartosPtos(key.CuartosPtos);
+        setSemisPtos(key.SemisPtos);
+        setFinalPtos(key.FinalPtos);
+        setGoleadoresPtos(key.GoleadoresPtos);
+        setPartidosPtos(key.PartidosPtos);
+        setTotalPtos(key.TotalPtos);
+      }
+    });
+  }
 
-        </div >
+  return (
+    <div className={classes.ligaPage}>
+      <div className={classes.tituloLiga}>{params.usuario}</div>
+      <div className={classes.inputsItem}>
+        <div className={classes.tituloPuntosUsuario}>
+          {" "}
+          <strong>Total Puntos: {TotalPtos}</strong>{" "}
+        </div>
+        <div className={classes.containerPuntaje}>
+          <div>
+            {" "}
+            <strong>Ganador:</strong> {inputGanador}
+          </div>
+          <div className={classes.puntajeItemUsuario}>{GanadorPtos}</div>
+        </div>
+        <hr />
+        <div className={classes.containerPuntaje}>
+          <div>
+            {" "}
+            <strong>Desilusion:</strong> {inputDesilusion}
+          </div>
+          <div className={classes.puntajeItemUsuario}>{DesilusionPtos}</div>
+        </div>
+        <hr />
+        <div className={classes.containerPuntaje}>
+          <div>
+            {" "}
+            <strong>Revelacion:</strong> {inputRevelacion}
+          </div>
+          <div className={classes.puntajeItemUsuario}>{RevelacionPtos}</div>
+        </div>
+        <hr />
+        <div className={classes.containerPuntaje}>
+          <div>
+            {" "}
+            <strong>Lamentable:</strong> {inputLamentable}
+          </div>
+          <div className={classes.puntajeItemUsuario}>{LamentablePtos}</div>
+        </div>
+        <hr />
+        <div className={classes.containerPuntaje}>
+          <div>
+            {" "}
+            <strong>Goleadores:</strong>{" "}
+            {inputGoleadores.map((key) => (
+              <span>{key}, </span>
+            ))}{" "}
+          </div>
+          <div className={classes.puntajeItemUsuario}>{GoleadoresPtos}</div>
+        </div>
+        <br />
+        <Partidos />
+        <div className={classes.containerPuntaje}>
+          <div>
+            {" "}
+            <strong>Puntos Partidos:</strong>
+          </div>
+          <div>{PartidosPtos}</div>
+        </div>
+        <hr />
+        <div className={classes.containerPuntaje}>
+          <div>
+            {" "}
+            <strong>Octavos:</strong>{" "}
+            {inputOctavos.map((key) => (
+              <span>{key} </span>
+            ))}{" "}
+          </div>
+          <div className={classes.puntajeItemUsuario}>{OctavosPtos}</div>
+        </div>
+        <hr />
+        <div className={classes.containerPuntaje}>
+          <div>
+            {" "}
+            <strong>Cuartos:</strong>{" "}
+            {inputCuartos.map((key) => (
+              <span>{key} </span>
+            ))}{" "}
+          </div>
+          <div className={classes.puntajeItemUsuario}>{CuartosPtos}</div>
+        </div>
+        <hr />
+        <div className={classes.containerPuntaje}>
+          <div>
+            {" "}
+            <strong>Semis:</strong>{" "}
+            {inputSemis.map((key) => (
+              <span>{key} </span>
+            ))}{" "}
+          </div>
+          <div className={classes.puntajeItemUsuario}>{SemisPtos}</div>
+        </div>
+        <hr />
+        <div className={classes.containerPuntaje}>
+          <div>
+            {" "}
+            <strong>Final:</strong>{" "}
+            {inputFinal.map((key) => (
+              <span>{key} </span>
+            ))}{" "}
+          </div>
+          <div className={classes.puntajeItemUsuario}>{FinalPtos}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-    );
-}
-
-export default Usuario
-
-
-/* const [GanadorPtos, setGanadorPtos] = useState();
-const [DesilusionPtos, setDesilusionPtos] = useState();
-const [LamentablePtos, setLamentablePtos] = useState();
-const [RevelacionPtos, setRevelacionPtos] = useState();
-const [OctavosPtos, setOctavosPtos] = useState();
-const [CuartosPtos, setCuartosPtos] = useState();
-const [SemisPtos, setSemisPtos] = useState();
-const [FinalPtos, setFinalPtos] = useState();
-const [GoleadoresPtos, setGoleadoresPtos] = useState();
-const [PartidosPtos, setPartidosPtos] = useState();
-const [TotalPtos, setTotalPtos] = useState(); */
+export default Usuario;
