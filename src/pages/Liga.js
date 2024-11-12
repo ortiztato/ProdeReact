@@ -15,11 +15,7 @@ const Liga = () => {
   }, []);
 
   async function fetchUsuarios() {
-<<<<<<< HEAD
     const response = await fetch(process.env.REACT_APP_BACKEND_URL);
-=======
-    const response = await fetch(process.env.BACKEND_URL);
->>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
     const data = await response.json();
 
     if (!response.ok) {

@@ -5,6 +5,7 @@ import copa from "../assets/copa.png";
 import { Link } from "react-router-dom";
 
 const Portada = () => {
+
   return (
     <div className={classes.portadaPage}>
       <h1 className={classes.tituloPortada}>PRODE MUNDIAL 2022</h1>

@@ -13,25 +13,19 @@ import Octavos from "../components/Octavos/Octavos";
 import Semis from "../components/Semis/Semis";
 import Cuartos from "../components/Cuartos/Cuartos";
 import Final from "../components/Final/Final";
-<<<<<<< HEAD
 
 import Modal from "../UI/Modal";
 
 import InputsContext from "../store/inputs-context";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-=======
-
-import Modal from "../UI/Modal";
-
-import InputsContext from "../store/inputs-context";
-import React, { useContext, useState } from "react";
-import { Route, Switch, Redirect, Link, useHistory } from "react-router-dom";
-/* import { useRouter } from 'next/router' */
-
->>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
 function Form() {
+
+  window.onscroll = function () {
+    console.log('scrolling');
+  }
+  
   const ctx = useContext(InputsContext);
 
   const [modal, setModal] = useState();
@@ -41,11 +35,7 @@ function Form() {
   const nombreHandler = async (event) => {
     console.log("buscando prodes");
 
-<<<<<<< HEAD
     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/names`);
-=======
-    const response = await fetch(process.env.BACKEND_URL + "/names");
->>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
     const data = await response.json();
 
     if (!response.ok) {
@@ -69,7 +59,6 @@ function Form() {
       setUserExists(false);
       ctx.nombre(event.target.value);
     }
-<<<<<<< HEAD
   };
 
   const ligaHandler = (event) => {
@@ -104,71 +93,18 @@ function Form() {
     alert("Fecha limite de presentacion expirada");
   };
 
-  return (
-    <div className="App">
-      {modal && <Modal content={modal.content} onConfirm={modalHandler} />}
+  useEffect(() => {
+    const temporizador = setTimeout(() => {
+      console.log('This will run after 5 seconds!');
+    }, 5000);
 
-=======
-
-    // ctx.nombre(event.target.value);
-  };
-
-  const ligaHandler = (event) => {
-    const ligaTrim = event.target.value.trim().toLowerCase();
-    setLiga(ligaTrim);
-    ctx.liga(ligaTrim);
-  };
-
-  /* const submitForm = () => {
-      if (ctx.undefinedInputs !== 10) {
-        setModal({
-          content: 'faltan campos por completar',
-        });
-      }
-      else {
-        setModal({
-          content: 'el PRODE fue enviado correctamente',
-        });
-      }
-  
-    }; */
-
-  /* const router = useRouter() */
-
-  const history = useHistory();
-
-  const submitOK = () => {
-    setModal({
-      content: "el PRODE fue enviado correctamente",
-    });
-    ctx.submitForm();
-  };
-
-  const submitError = () => {
-    setModal({
-      content: "faltan campos por completar",
-    });
-    /*  router.push('/home') */
-  };
-
-  const modalHandler = () => {
-    /* history.push("/home"); */
-    setModal(null);
-    if (ctx.undefinedInputs === 0) {
-      history.push(`/ligas/${liga}`);
-    }
-    /* history.push("/home"); */
-  };
-
-  const alertaVencido = () => {
-    alert("Fecha limite de presentacion expirada");
-  };
+    return () => clearTimeout(temporizador);
+  }, []);
 
   return (
     <div className="App">
       {modal && <Modal content={modal.content} onConfirm={modalHandler} />}
 
->>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
       <header className="App-header"></header>
       <div className="tituloprode">
         PRODE <br /> MUNDIAL <br /> 2022
@@ -244,21 +180,8 @@ function Form() {
           </div>
         )}
       </div>
-<<<<<<< HEAD
-=======
-
-      {/* <div className='iraligas' >
-                ir a  <Link to={`/ligas/`}>LIGAS</Link>
-            </div> */}
->>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
     </div>
   );
 }
 
 export default Form;
-<<<<<<< HEAD
-=======
-
-// funcion original
-// {ctx.undefinedInputs === 0 /* cambiar esto despues */ ? <button className='bidsubmitbutton' onClick={submitOK}> ENVIAR </button> : <button className='bidsubmitbuttonerror' onClick={submitError}> ENVIAR </button>}
->>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d

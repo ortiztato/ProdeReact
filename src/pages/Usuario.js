@@ -38,11 +38,7 @@ const Usuario = () => {
   async function fetchInputs() {
     console.log("buscando prodes");
 
-<<<<<<< HEAD
     const response = await fetch(process.env.REACT_APP_BACKEND_URL);
-=======
-    const response = await fetch(process.env.BACKEND_URL);
->>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
     const data = await response.json();
 
     if (!response.ok) {
@@ -143,7 +139,6 @@ const Usuario = () => {
           <div>{PartidosPtos}</div>
         </div>
         <hr />
-<<<<<<< HEAD
 
         <div className={classes.containerPuntaje}>
           <div>
@@ -193,54 +188,4 @@ const Usuario = () => {
   );
 };
 
-=======
-        <div className={classes.containerPuntaje}>
-          <div>
-            {" "}
-            <strong>Octavos:</strong>{" "}
-            {inputOctavos.map((key) => (
-              <span>{key} </span>
-            ))}{" "}
-          </div>
-          <div className={classes.puntajeItemUsuario}>{OctavosPtos}</div>
-        </div>
-        <hr />
-        <div className={classes.containerPuntaje}>
-          <div>
-            {" "}
-            <strong>Cuartos:</strong>{" "}
-            {inputCuartos.map((key) => (
-              <span>{key} </span>
-            ))}{" "}
-          </div>
-          <div className={classes.puntajeItemUsuario}>{CuartosPtos}</div>
-        </div>
-        <hr />
-        <div className={classes.containerPuntaje}>
-          <div>
-            {" "}
-            <strong>Semis:</strong>{" "}
-            {inputSemis.map((key) => (
-              <span>{key} </span>
-            ))}{" "}
-          </div>
-          <div className={classes.puntajeItemUsuario}>{SemisPtos}</div>
-        </div>
-        <hr />
-        <div className={classes.containerPuntaje}>
-          <div>
-            {" "}
-            <strong>Final:</strong>{" "}
-            {inputFinal.map((key) => (
-              <span>{key} </span>
-            ))}{" "}
-          </div>
-          <div className={classes.puntajeItemUsuario}>{FinalPtos}</div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
->>>>>>> 304d94f75c00404117ba9016aae7a8773bb0106d
 export default Usuario;
